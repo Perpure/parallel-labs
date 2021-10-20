@@ -40,7 +40,7 @@ public class AirportWritableComparable implements WritableComparable {
         AirportWritableComparable airport = (AirportWritableComparable) o;
         if (this.airportID > airport.airportID) return 1;
         if (this.airportID < airport.airportID) return -1;
-        return this.typeFlag.compareTo;
+        return Integer.compare(this.typeFlag, airport.typeFlag);
     }
 
     @Override

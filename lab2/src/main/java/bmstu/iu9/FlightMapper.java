@@ -10,7 +10,7 @@ public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComp
 
     private static String DELIMITER_REGEX = ",";
     private static int AIRPORT_ID_INDEX = 14;
-    private static int DELAYTIME_NEW_INDEX
+    private static int DELAY_NEW_INDEX = 18;
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {

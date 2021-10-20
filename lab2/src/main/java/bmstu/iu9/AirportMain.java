@@ -18,7 +18,8 @@ public class AirportMain {
         Job job = Job.getInstance(conf, "Airport");
         job.setJarByClass(AirportMain.class);
 
-        
+        Mu
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         FileOutputFormat.setOutputPath(job, new Path(args[1]));

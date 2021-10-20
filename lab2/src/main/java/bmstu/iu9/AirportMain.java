@@ -11,6 +11,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class AirportMain {
@@ -19,7 +20,10 @@ public class AirportMain {
         Job job = Job.getInstance(conf, "Airport");
         job.setJarByClass(AirportMain.class);
 
-        MultipleInputs.addInputPath(job, args[0], ,);
+        MultipleInputs.addInputPath(job, args[0],
+                                    TextInputFormat.class, FlightMapper.class);
+        MultipleInputs.addInputPath(job, args[1],
+                                    TextInputFormat.class, AirportMapper.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

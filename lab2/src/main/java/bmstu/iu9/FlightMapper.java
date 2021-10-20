@@ -22,7 +22,7 @@ public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComp
             delay = Integer.parseInt(delayRaw);
             int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX]);
             context.write(new AirportWritableComparable(airportID, FLIGHT_TYPE),
-                          new Text(dela));
+                          new Integer(dela));
         }
     }
 }

@@ -18,8 +18,10 @@ public class AirportMapper extends Mapper<LongWritable, Text, AirportWritableCom
         if (key.get() != 0) {
             String[] row = value.toString().split(DELIMITER_REGEX);
             String airportName = row[NAME_INDEX].substring(1);
-            int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX].substring());
-            context.write(new AirportWritableComparable(airportID, FLIGHT_TYPE),
+            String airportIDRaw = row[AIRPORT_ID_INDEX];
+            airportIDRaw = airportIDRaw.substring(0, airportIDRaw.length() - 1);
+            int airportID = Integer.parseInt(airportIDRaw);
+            context.write(new AirportWritableComparable(airportID, AIRPORT_TYPE),
                           new IntWritable(delay));
         }
     }

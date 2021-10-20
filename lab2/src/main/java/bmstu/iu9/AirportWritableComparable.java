@@ -35,4 +35,8 @@ public class AirportWritableComparable implements WritableComparable {
         this.airportID = dataInput.readInt();
         this.typeFlag = dataInput.readInt();
     }
+
+    public int hashCode() {
+        return
+    }
 }

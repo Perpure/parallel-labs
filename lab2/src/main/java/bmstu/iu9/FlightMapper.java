@@ -9,10 +9,13 @@ import java.io.IOException;
 public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, FlightMapper> {
 
     private static String DELIMITER_REGEX = ",";
+    
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] row = value.toString().split(DELIMITER_REGEX);
-        
+        if (key.get() != 0) {
+            String[] row = value.toString().split(DELIMITER_REGEX);
+
+        }
     }
 }

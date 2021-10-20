@@ -1,12 +1,13 @@
 package bmstu.iu9;
 
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, FlightMapper> {
+public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, IntWritable> {
 
     private static String DELIMITER_REGEX = ",";
     private static int AIRPORT_ID_INDEX = 14;

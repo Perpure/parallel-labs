@@ -8,15 +8,15 @@ import java.io.IOException;
 
 public class AirportWritableComparable implements WritableComparable {
 
-    private int primaryTableFlag;
+    private int typeFlag;
     private int airportID;
 
-    public int getPrimaryTableFlag() {
-        return primaryTableFlag;
+    public int getTypeFlag() {
+        return typeFlag;
     }
 
-    public void setPrimaryTableFlag(int primaryTableFlag) {
-        this.primaryTableFlag = primaryTableFlag;
+    public void setTypeFlag(int typeFlag) {
+        this.typeFlag = typeFlag;
     }
 
     public int getAirportID() {

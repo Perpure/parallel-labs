@@ -11,6 +11,22 @@ public class AirportWritableComparable implements WritableComparable {
     private int primaryTableFlag;
     private int airportID;
 
+    public int getPrimaryTableFlag() {
+        return primaryTableFlag;
+    }
+
+    public void setPrimaryTableFlag(int primaryTableFlag) {
+        this.primaryTableFlag = primaryTableFlag;
+    }
+
+    public int getAirportID() {
+        return airportID;
+    }
+
+    public void setAirportID(int airportID) {
+        this.airportID = airportID;
+    }
+
     public AirportWritableComparable() {
     }
 

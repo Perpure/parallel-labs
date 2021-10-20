@@ -19,7 +19,7 @@ public class AirportMain {
         Job job = Job.getInstance(conf, "Airport");
         job.setJarByClass(AirportMain.class);
 
-        MultipleInputs.addInputPath(job, args[0], );
+        MultipleInputs.addInputPath(job, args[0], ,);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

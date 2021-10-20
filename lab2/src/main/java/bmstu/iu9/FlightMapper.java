@@ -17,6 +17,7 @@ public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComp
         if (key.get() != 0) {
             String[] row = value.toString().split(DELIMITER_REGEX);
             String delay = row[DELAY_NEW_INDEX];
+            if (delay.isEmpty()) return;
             
         }
     }

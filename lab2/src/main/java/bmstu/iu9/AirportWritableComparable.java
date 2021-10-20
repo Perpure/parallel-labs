@@ -8,8 +8,8 @@ import java.io.IOException;
 
 public class AirportWritableComparable implements WritableComparable {
 
-    private int typeFlag;
     private int airportID;
+    private int typeFlag;
 
     public AirportWritableComparable(int airportID, int typeFlag) {
         this.airportID = airportID;
@@ -48,6 +48,6 @@ public class AirportWritableComparable implements WritableComparable {
     @Override
     public void readFields(DataInput dataInput) throws IOException {
         this.airportID = dataInput.readInt();
-        
+        this.typeFlag = dataInput.readInt();
     }
 }

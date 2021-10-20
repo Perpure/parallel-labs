@@ -16,25 +16,6 @@ public class AirportWritableComparable implements WritableComparable {
         this.typeFlag = typeFlag;
     }
 
-    public int getTypeFlag() {
-        return typeFlag;
-    }
-
-    public void setTypeFlag(int typeFlag) {
-        this.typeFlag = typeFlag;
-    }
-
-    public int getAirportID() {
-        return airportID;
-    }
-
-    public void setAirportID(int airportID) {
-        this.airportID = airportID;
-    }
-
-    public AirportWritableComparable() {
-    }
-
     @Override
     public int compareTo(Object o) {
         AirportWritableComparable airport = (AirportWritableComparable) o;
@@ -45,7 +26,8 @@ public class AirportWritableComparable implements WritableComparable {
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
-
+        dataOutput.writeInt(airportID);
+        dataOutput.writeInt(typeFlag);
     }
 
     @Override

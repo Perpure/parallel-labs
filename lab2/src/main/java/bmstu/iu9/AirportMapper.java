@@ -7,14 +7,14 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class AirportMapper {
-    private static String DELIMITER_REGEX = ",";
-    private static int AIRPORT_ID_INDEX = 14;
-    private static int DELAY_INDEX = 17;
-    private static int FLIGHT_TYPE = 1;
+public class AirportMapper extends Mapper<LongWritable, Text, AirportWritableComparable, IntWritable> {
+    private static String DELIMITER_REGEX = "\",\"";
+    private static int AIRPORT_ID_INDEX = 0;
+    private static int NAME_INDEX = 1;
+    private static int AIRPORT_TYPE = 0;
 
     @Override
-    protected void map(LongWritable key, Text value, Mapper.Context context) throws IOException, InterruptedException {
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         if (key.get() != 0) {
             String[] row = value.toString().split(DELIMITER_REGEX);
             String delayRaw = row[DELAY_INDEX];

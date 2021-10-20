@@ -9,7 +9,8 @@ import java.io.IOException;
 public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, FlightMapper> {
 
     private static String DELIMITER_REGEX = ",";
-    
+    private static int AIRPORT_ID_INDEX = 14;
+    private static int DELAYTIME_NEW_INDEX
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {

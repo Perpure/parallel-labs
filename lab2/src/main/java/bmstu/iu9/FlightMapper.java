@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, IntWritable> {
+public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, floatWritable> {
 
     private static String DELIMITER_REGEX = ",";
     private static int AIRPORT_ID_INDEX = 14;
@@ -20,10 +20,10 @@ public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComp
             String[] row = value.toString().split(DELIMITER_REGEX);
             String delayRaw = row[DELAY_INDEX];
             if (delayRaw.isEmpty()) return;
-            delay = Integer.parseInt(delayRaw);
+            float delay = Integer.parseInt(delayRaw);
             int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX]);
             context.write(new AirportWritableComparable(airportID, FLIGHT_TYPE),
-                          new Integer(dela));
+                          new IntWritable(delay));
         }
     }
 }

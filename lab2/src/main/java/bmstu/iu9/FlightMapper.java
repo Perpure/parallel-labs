@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, floatWritable> {
+public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComparable, > {
 
     private static String DELIMITER_REGEX = ",";
     private static int AIRPORT_ID_INDEX = 14;

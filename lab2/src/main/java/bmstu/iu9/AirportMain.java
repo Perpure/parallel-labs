@@ -16,7 +16,7 @@ public class AirportMain {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Airport");
-        job.setJarByClass(WordCount.class);
+        job.setJarByClass(AirportMain.class);
         job.setMapperClass(TokenizerMapper.class);
         job.setCombinerClass(IntSumReducer.class);
         job.setReducerClass(IntSumReducer.class);

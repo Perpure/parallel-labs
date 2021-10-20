@@ -8,8 +8,8 @@ import java.io.IOException;
 
 public class AirportWritableComparable implements WritableComparable {
 
+    private int primaryFlag
 
-    
     @Override
     public int compareTo(Object o) {
         return 0;

@@ -37,6 +37,6 @@ public class AirportWritableComparable implements WritableComparable {
     }
 
     public int hashCode() {
-        return Integer.hashCode(this.airportID + this.typeFlag);
+        return Integer.hashCode(this.airportID + 100000 * this.typeFlag);
     }
 }

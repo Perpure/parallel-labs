@@ -1,4 +1,6 @@
 package bmstu.iu9;
 
-public class FlightMapper {
+import org.apache.hadoop.io.LongWritable;
+
+public class FlightMapper extends Mapper<LongWritable, Text,> {
 }

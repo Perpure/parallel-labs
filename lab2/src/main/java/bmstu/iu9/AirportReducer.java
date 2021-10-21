@@ -10,8 +10,8 @@ import java.util.Iterator;
 public class AirportReducer extends Reducer<AirportWritableComparable, Text, Text, Text> {
 
     @Override
-    protected void reduce(AirportWritableComparable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-        Iterator<IntWritable> iter = values.iterator();
+    protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        Iterator<Text> iter = values.iterator();
         Text systemInfo = new Text(iter.next());
         while (iter.hasNext()) {
             Text call = iter.next();

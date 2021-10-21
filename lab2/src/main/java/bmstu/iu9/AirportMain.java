@@ -26,6 +26,7 @@ public class AirportMain {
                                     TextInputFormat.class, AirportMapper.class);
 
         job.setMapOutputKeyClass(AirportWritableComparable.class);
+        job.setMapOutputKeyClass(Text.class);
         job.setReducerClass(AirportReducer.class);
 
         job.setOutputKeyClass(Text.class);

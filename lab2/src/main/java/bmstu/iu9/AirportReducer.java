@@ -1,6 +1,6 @@
 package bmstu.iu9;
 
-public class AirportReducer {
+public class AirportReducer Reducer<TextPair, Text, Text, Text> {
 
     @Override
     protected void reduce(TextPair key, Iterable<Text> values, Context context) throws

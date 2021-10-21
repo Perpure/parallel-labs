@@ -1,0 +1,7 @@
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/AirportComparator.java
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/FlightMapper.java
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/AirportPartitioner.java
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/AirportReducer.java
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/AirportWritableComparable.java
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/AirportMapper.java
+/home/fall/parallel-labs/lab2/src/main/java/bmstu/iu9/AirportMain.java

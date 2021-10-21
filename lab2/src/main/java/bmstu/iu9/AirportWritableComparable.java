@@ -41,10 +41,6 @@ public class AirportWritableComparable implements WritableComparable {
         this.typeFlag = dataInput.readInt();
     }
 
-    public Text toText() {
-        
-    }
-
     @Override
     public int hashCode() {
         return Integer.hashCode(this.airportID + 100000 * this.typeFlag);

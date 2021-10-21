@@ -13,10 +13,12 @@ public class AirportReducer extends Reducer<AirportWritableComparable, Text, Tex
     protected void reduce(AirportWritableComparable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         Iterator<Text> iter = values.iterator();
         Text airportName = new Text(iter.next());
+        float min = Float.MAX_VALUE, max = Float.MIN_VALUE, sum = 0;
+        int count = 0;
         while (iter.hasNext()) {
             Text call = iter.next();
             Text outValue = new Text(call.toString() + "\t" + systemInfo.toString());
-            context.write(key.getFirst(), outValue);
+            context.write(airportName, outValue);
         }
     }
 }

@@ -1,2 +1,4 @@
-package bmstu.iu9;public class AirportReducer {
+package bmstu.iu9;
+
+public class AirportReducer {
 }

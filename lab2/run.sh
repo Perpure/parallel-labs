@@ -15,7 +15,8 @@ hdfs dfs -mkdir /user
 hdfs dfs -mkdir /user/fall
 
 mvn package
-hadoop fs -copyFromLocal warandpeace1.txt 
-export HADOOP_CLASSPATH=target/WordCount.jar
-hadoop WordCount warandpeace1.txt output
+hadoop fs -copyFromLocal flights.csv
+hadoop fs -copyFromLocal airport.csv
+export HADOOP_CLASSPATH=target/AirportMain.jar
+hadoop ru.bmstu.AirportMain flights.csv airport.csv output
 hadoop fs -copyToLocal output 

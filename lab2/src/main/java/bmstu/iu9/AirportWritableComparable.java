@@ -1,5 +1,6 @@
 package bmstu.iu9;
 
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
@@ -38,6 +39,10 @@ public class AirportWritableComparable implements WritableComparable {
     public void readFields(DataInput dataInput) throws IOException {
         this.airportID = dataInput.readInt();
         this.typeFlag = dataInput.readInt();
+    }
+
+    public Text toText() {
+        
     }
 
     @Override

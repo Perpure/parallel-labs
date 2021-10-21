@@ -20,7 +20,7 @@ public class AirportMain {
                                     TextInputFormat.class, AirportMapper.class);
 
         job.setMapOutputKeyClass(AirportWritableComparable.class);
-        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
         job.setPartitionerClass(AirportPartitioner.class);
         job.setGroupingComparatorClass(AirportComparator.class);
         job.setReducerClass(AirportReducer.class);

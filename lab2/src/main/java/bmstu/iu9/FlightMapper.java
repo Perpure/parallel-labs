@@ -18,7 +18,7 @@ public class FlightMapper extends Mapper<LongWritable, Text, AirportWritableComp
         if (key.get() != 0) {
             String[] row = value.toString().split(DELIMITER_REGEX);
             String delayRaw = row[DELAY_INDEX];
-            if (delayRaw.isEmpty() || delayRaw.matches("^0.")) return;
+            if (delayRaw.isEmpty() || delayRaw.matches("^0.*")) return;
             int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX]);
             context.write(new AirportWritableComparable(airportID, FLIGHT_TYPE),
                           new Text(delayRaw));

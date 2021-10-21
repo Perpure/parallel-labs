@@ -17,6 +17,6 @@ hdfs dfs -mkdir /user/fall
 mvn package
 hadoop fs -copyFromLocal flights.csv
 hadoop fs -copyFromLocal airport.csv
-export HADOOP_CLASSPATH=target/AirportMain.jar
+export HADOOP_CLASSPATH=target/Airport.jar
 hadoop ru.bmstu.AirportMain flights.csv airport.csv output
 hadoop fs -copyToLocal output 

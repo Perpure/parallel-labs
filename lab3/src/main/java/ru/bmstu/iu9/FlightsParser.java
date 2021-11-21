@@ -3,7 +3,7 @@ package ru.bmstu.iu9;
 import scala.Tuple2;
 
 public class FlightsParser {
-    private static final int AIRPORT_ORIGIN_ID_INDEX = 11;
+    private static final int AIRPORT_ORIG_ID_INDEX = 11;
     private static final int AIRPORT_DEST_ID_INDEX = 14;
     private static final int DELAY_INDEX = 18;
     private static final int CANCELLED_INDEX = 19;
@@ -22,8 +22,9 @@ public class FlightsParser {
         String cancelledRaw = row[CANCELLED_INDEX];
         boolean isCanceled = Float.parseFloat(cancelledRaw) == 1;
 
-        int airportOriginId = Integer.parseInt(row[AIRPORT_ORIGIN_ID_INDEX]);
+        int airportOrigId = Integer.parseInt(row[AIRPORT_ORIG_ID_INDEX]);
         int airportDestId = Integer.parseInt(row[AIRPORT_DEST_ID_INDEX]);
+        return new Tuple2()
     }
 
 }

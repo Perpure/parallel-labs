@@ -17,6 +17,6 @@ public class AirportsApp {
                 s -> Arrays.stream(s.split(" ")).iterator()
         );
         JavaPairRDD<String, Long> wordsWithCount =
-        splitted.mapToPair(s -> new Tuple2<>(s, 1l));
+        splitted.mapToPair(s -> new Tuple2<>(s, 1L));
     }
 }x

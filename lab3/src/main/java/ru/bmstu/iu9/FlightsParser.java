@@ -10,6 +10,10 @@ public class FlightsParser {
 
     public static Tuple2<> parseFlights(String rowRaw){
         String[] row = rowRaw.split(FLIGHT_DELIMETER);
+        String delayRaw = row[DELAY_INDEX];
+        if (delayRaw.isEmpty() || delayRaw.matches("^0.*")) {
+            
+        }
     }
 
 }

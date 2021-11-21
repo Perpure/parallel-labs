@@ -1,4 +1,4 @@
 package ru.bmstu.iu9;
 
-public class FlightParser {
+public class FlightsParser {
 }

@@ -1,5 +1,7 @@
 package ru.bmstu.iu9;
 
 public class AirportsApp {
-    public static void main
+    public static void main(String[] args){
+        
+    }
 }

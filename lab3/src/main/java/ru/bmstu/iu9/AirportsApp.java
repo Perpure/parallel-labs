@@ -12,7 +12,7 @@ public class AirportsApp {
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> distFile = sc.textFile("war-and-peace-1.txt");
+        JavaRDD<String> distFile = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaRDD<String> splitted = distFile.flatMap(
                 s -> Arrays.stream(s.split(" ")).iterator()
         );

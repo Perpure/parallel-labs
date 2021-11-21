@@ -1,18 +1,22 @@
 package ru.bmstu.iu9;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
+import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.JavaSparkContext;
+import scala.Tuple2;
+
+import java.util.Arrays;
 
 public class AirportsApp {
     public static void main(String[] args){
-        SparkConf conf = new SparkConf().setAppName(Hadoop "example");
-        JavaSparkContext sc = new JavaSparkContext(Hadoop conf);
-        JavaRDD<String> distFile = sc.textFile(Hadoop "war-and-peace-1.txt");
-        JavaRDD<String> splitted = distFile.flatMap(Hadoop
-                s -> Arrays.stream(Hadoop s.split(Hadoop " ")).iterator(Hadoop )
+        SparkConf conf = new SparkConf().setAppName("example");
+        JavaSparkContext sc = new JavaSparkContext(conf);
+        JavaRDD<String> distFile = sc.textFile("war-and-peace-1.txt");
+        JavaRDD<String> splitted = distFile.flatMap(
+                s -> Arrays.stream(s.split(" ")).iterator()
         );
         JavaPairRDD<String, Long> wordsWithCount =
-        splitted.mapToPair(Hadoop
-                s -> new Tuple2<>(Hadoop s, 1l)
-        );
+        splitted.mapToPair(s -> new Tuple2<>(s, 1l));
     }
-}
+}x

@@ -11,9 +11,12 @@ public class FlightsParser {
     public static Tuple2<> parseFlights(String rowRaw){
         String[] row = rowRaw.split(FLIGHT_DELIMETER);
         String delayRaw = row[DELAY_INDEX];
-        if (delayRaw.isEmpty() || delayRaw.matches("^0.*")) {
-            
+        if (delayRaw.isEmpty()) {
+            float delayTime = 0;
+        } else {
+            float delayTime = Float.parseFloat(delayRaw);
         }
+        boolean isCanceled =
     }
 
 }

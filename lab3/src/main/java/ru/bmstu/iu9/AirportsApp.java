@@ -30,4 +30,6 @@ public class AirportsApp {
         JavaRDD<String> infoRDD = flightsInfo.map()
 
     }
+
+    
 }

@@ -23,5 +23,7 @@ public class AirportsParser implements Serializable {
         return new Tuple2<>(airportID, airportName);
     }
 
-    public static boolean IsDataRow()
+    public static boolean IsDataRow(String row) {
+        
+    }
 }

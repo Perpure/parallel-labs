@@ -21,12 +21,14 @@ public class FlightsInfo implements Serializable {
         return new FlightsInfo(flight.getDelay(), isDelayed, isCancelled, 1);
     }
 
-    public static FlightsInfo updateInfo(FlightsInfo, Flight flight) {
-        int isDelayed = flight.getDelay() > 0 ? 1 : 0;
-        int isCancelled = flight.isCancelled() ? 1 : 0;
-        if isDelayed {
-
+    public static FlightsInfo updateInfo(FlightsInfo info, Flight flight) {
+        if (flight.getDelay() > 0) {
+            info.incDelayedCount();
         }
+        if (flight.isCancelled()) {
+            info.incCancelledCount();
+        }
+        
     }
     public static mergeInfo
 
@@ -36,5 +38,11 @@ public class FlightsInfo implements Serializable {
 
     public void incCancelledCount() {
         this.cancelledCount++;
+    }
+
+    public void updMaxDelay(float delay) {
+        if (delay > this.maxDelay) {
+            this.maxDelay = delay;
+        }
     }
 }

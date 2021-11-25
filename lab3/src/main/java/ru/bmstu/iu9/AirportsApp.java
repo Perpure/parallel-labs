@@ -24,6 +24,7 @@ public class AirportsApp {
                 .mapToPair(AirportsParser::parseAirports);
 
         Map<Integer, String> airportsMap = airports.collectAsMap();
+        
 
 
     }

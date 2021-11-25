@@ -31,7 +31,7 @@ public class AirportsApp {
 
         JavaRDD<String> infoRDD = flightsInfo.map(
                 flightInfo -> {
-                    Map<Integer, String> airportsBroadcastedMap = airportsBroadcasted.getValue();
+                    Map<Integer, String> airportsBroadcastedMap = airportsBroadcasted.value();
                     String origAirport = airportsBroadcastedMap.get(flightInfo._1._1);
                     String destAirport = airportsBroadcastedMap.get(flightInfo._1._2);
                     return origAirport + " -> " + destAirport + ": " + flightInfo._2.toString();

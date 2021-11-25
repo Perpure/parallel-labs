@@ -24,6 +24,6 @@ public class AirportsParser implements Serializable {
     }
 
     public static boolean isDataRow(String rowRaw) {
-        return rowRaw.startsWith(HEADER_PREFIX);
+        return !rowRaw.startsWith(HEADER_PREFIX);
     }
 }

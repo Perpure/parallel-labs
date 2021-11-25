@@ -13,7 +13,7 @@ public class AirportsApp {
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> distFile = sc.textFile("664600583_T_ONTIME_sample.csv");
-        JavaPairRDD
+        JavaPairRDD<String>
         JavaRDD<String> splitted = distFile.flatMap(
                 s -> Arrays.stream(s.split(" ")).iterator()
         );

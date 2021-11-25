@@ -10,7 +10,7 @@ import scala.Tuple2;
 import java.util.Map;
 
 public class AirportsApp {
-    private static String path = "hfds://localhost:9000/user/fall/"
+    private static String outPath = "hdfs://localhost:9000/user/fall/output";
 
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
@@ -37,7 +37,7 @@ public class AirportsApp {
                     return origAirport + " -> " + destAirport + ": " + flightInfo._2.toString();
                 }
         );
-        infoRDD.saveAsTextFile();
+        infoRDD.saveAsTextFile(outPath);
     }
 
 

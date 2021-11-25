@@ -10,6 +10,8 @@ import scala.Tuple2;
 import java.util.Map;
 
 public class AirportsApp {
+    private static String path = "hfds:"
+
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
         JavaSparkContext sc = new JavaSparkContext(conf);

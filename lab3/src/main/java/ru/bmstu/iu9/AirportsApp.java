@@ -34,7 +34,7 @@ public class AirportsApp {
                     String destAirport = airportsBroadcastedMap.get(flightInfo._1._2);
                     return origAirport + " -> " + destAirport + ": " + flightInfo._2.toString();
                 }
-        )
+        );
 
     }
 

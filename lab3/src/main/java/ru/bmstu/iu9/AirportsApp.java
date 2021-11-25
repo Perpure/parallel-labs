@@ -35,7 +35,7 @@ public class AirportsApp {
                     return origAirport + " -> " + destAirport + ": " + flightInfo._2.toString();
                 }
         );
-
+        infoRDD.saveAsTextFile();
     }
 
 

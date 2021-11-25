@@ -18,7 +18,7 @@ public class AirportsApp {
                 FlightsInfo::createInfo, FlightsInfo::updateInfo, FlightsInfo::mergeInfo
         );
 
-        
+
 
     }
 }

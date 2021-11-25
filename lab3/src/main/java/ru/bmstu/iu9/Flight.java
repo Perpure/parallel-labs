@@ -1,2 +1,4 @@
-package ru.bmstu.iu9;public class Flight {
+package ru.bmstu.iu9;
+
+public class Flight {
 }

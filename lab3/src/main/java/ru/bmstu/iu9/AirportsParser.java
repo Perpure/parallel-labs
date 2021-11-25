@@ -1,2 +1,7 @@
-package ru.bmstu.iu9;public class AirportsParser {
+package ru.bmstu.iu9;
+
+import java.io.Serializable;
+
+public class AirportsParser implements Serializable {
+    private 
 }

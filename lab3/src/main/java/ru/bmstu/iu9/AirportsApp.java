@@ -14,7 +14,7 @@ public class AirportsApp {
         JavaRDD<String> distFile = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaPairRDD<Tuple2<Integer, Integer>, Flight> flights = distFile.mapToPair(FlightsParser::parseFlights);
         JavaPairRDD<Tuple2<Integer, Integer>, FlightsInfo> flightsInfo = flights.combineByKey(
-                
+                FlightsInfo::createInfo, FlightsInfo::updateInfo, FlightsInfo::mergeInfo
         )
     }
 }

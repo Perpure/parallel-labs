@@ -10,7 +10,7 @@ import scala.Tuple2;
 import java.util.Map;
 
 public class AirportsApp {
-    private static String path = "hfds://localhost:9000/"
+    private static String path = "hfds://localhost:9000/user/fall/"
 
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");

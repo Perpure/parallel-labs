@@ -13,7 +13,7 @@ public class AirportsParser implements Serializable {
     private static final int NAME_INDEX = 1;
     private static final int AIRPORT_TYPE = 0;
 
-    protected static  map(LongWritable key, Text value, Mapper.Context context) throws IOException, InterruptedException {
+    public static  map(LongWritable key, Text value, Mapper.Context context) throws IOException, InterruptedException {
         if (key.get() != 0) {
             String rowRaw = value.toString();
             rowRaw = rowRaw.substring(1, rowRaw.length() - 1);

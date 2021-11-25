@@ -18,7 +18,7 @@ public class AirportsApp {
         );
 
         JavaRDD<String> airportsFile = sc.textFile("664600583_T_ONTIME_sample.csv");
-        JavaPairRDD
+        JavaPairRDD<Integer, String> = 
 
 
     }

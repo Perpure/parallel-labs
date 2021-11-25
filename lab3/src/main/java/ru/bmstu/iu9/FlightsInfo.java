@@ -27,10 +27,10 @@ public class FlightsInfo implements Serializable {
         int newDelayedCount = info.getDelayedCount() + isDelayed;
         int newCancelledCount = info.getCancelledCount() + isCancelled;
         float newMaxDelay = Float.max(info.maxDelay, flight.getDelay());
-        return new FlightsInfo(newMaxDelay, newDelayedCount, newCancelledCount, info.c)
-
+        return new FlightsInfo(newMaxDelay, newDelayedCount, newCancelledCount, info.getTotalCount() + 1)
     }
-    public static mergeInfo
+
+    public static FlightsInfo mergeInfo(FlightsInfo info1, FlightsInfo info2)
 
     public int getDelayedCount() {
         return this.delayedCount;
@@ -39,6 +39,11 @@ public class FlightsInfo implements Serializable {
     public int getCancelledCount() {
         return this.cancelledCount;
     }
+
+    public int getTotalCount() {
+        return this.totalCount;
+    }
+
 
     public float getMaxDelay() {
         return this.maxDelay;

@@ -23,8 +23,8 @@ public class FlightsParser {
 
         int airportOrigId = Integer.parseInt(row[AIRPORT_ORIG_ID_INDEX]);
         int airportDestId = Integer.parseInt(row[AIRPORT_DEST_ID_INDEX]);
-        return new Tuple2(new Tuple2(airportOrigId, airportDestId),
-                          new Flight(delayTime, isCanceled, airportOrigId, airportDestId));
+        return new Tuple2<>(new Tuple2<>(airportOrigId, airportDestId),
+                            new Flight(delayTime, isCanceled, airportOrigId, airportDestId));
     }
 
 }

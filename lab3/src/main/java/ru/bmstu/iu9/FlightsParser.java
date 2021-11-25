@@ -9,14 +9,13 @@ public class FlightsParser {
     private static final int CANCELLED_INDEX = 19;
     public static final String FLIGHT_DELIMETER = ",";
 
-    public static Tuple2<> parseFlights(String rowRaw){
+    public static Tuple2<Tuple2<int, int>, Flight> parseFlights(String rowRaw){
         String[] row = rowRaw.split(FLIGHT_DELIMETER);
 
         String delayRaw = row[DELAY_INDEX];
-        if (delayRaw.isEmpty()) {
-            float delayTime = 0;
-        } else {
-            float delayTime = Float.parseFloat(delayRaw);
+        float delayTime = 0;
+        if (!delayRaw.isEmpty()) {
+            delayTime = Float.parseFloat(delayRaw);
         }
 
         String cancelledRaw = row[CANCELLED_INDEX];
@@ -24,7 +23,8 @@ public class FlightsParser {
 
         int airportOrigId = Integer.parseInt(row[AIRPORT_ORIG_ID_INDEX]);
         int airportDestId = Integer.parseInt(row[AIRPORT_DEST_ID_INDEX]);
-        return new Tuple2<>(new Tuple2(airportOrigId, airportDestId), )
+        return new Tuple2(new Tuple2(airportOrigId, airportDestId),
+                          new Flight(delayTime, isCanceled, airportOrigId, airportDestId));
     }
 
 }

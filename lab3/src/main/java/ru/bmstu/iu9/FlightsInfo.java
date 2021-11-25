@@ -25,8 +25,16 @@ public class FlightsInfo implements Serializable {
         int isDelayed = flight.getDelay() > 0 ? 1 : 0;
         int isCancelled = flight.isCancelled() ? 1 : 0;
         if isDelayed {
-            
+
         }
     }
     public static mergeInfo
+
+    public void incDelayedCount() {
+        this.delayedCount++;
+    }
+
+    public void incCancelledCount() {
+        this.cancelledCount++;
+    }
 }

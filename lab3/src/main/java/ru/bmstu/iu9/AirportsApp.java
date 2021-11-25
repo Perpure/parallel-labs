@@ -18,7 +18,7 @@ public class AirportsApp {
                 FlightsInfo::createInfo, FlightsInfo::updateInfo, FlightsInfo::mergeInfo
         );
 
-        JavaRDD<String> airportsFile("664600583_T_ONTIME_sample.csv")
+        JavaRDD<String> airportsFile = sc.textFile("664600583_T_ONTIME_sample.csv");
 
 
     }

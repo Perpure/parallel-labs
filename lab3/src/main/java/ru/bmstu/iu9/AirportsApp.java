@@ -23,7 +23,7 @@ public class AirportsApp {
         JavaPairRDD<Integer, String> airports = airportsFile.filter(AirportsParser::isDataRow)
                 .mapToPair(AirportsParser::parseAirports);
 
-        Map<Integer, String> airportsMap = 
+        Map<Integer, String> airportsMap = airports.collectAsMap();
 
 
     }

@@ -17,6 +17,5 @@ hdfs dfs -mkdir /user/fall
 mvn package
 hadoop fs -copyFromLocal flights.csv
 hadoop fs -copyFromLocal airports.csv
-export HADOOP_CLASSPATH=target/AirportsApp.jar
-hadoop ru.bmstu.iu9.AirportsApp flights.csv airports.csv output
+spark-submit --class ru.bmstu.iu9.AirportsApp --master yarn-client --num-executors 3  target/AirportsApp.jar
 hadoop fs -copyToLocal output

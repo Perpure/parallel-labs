@@ -16,7 +16,7 @@ public class FlightsInfo implements Serializable {
     }
 
     public static createInfo(Flight flight) {
-        return new FlightsInfo()
+        return new FlightsInfo(flight.getDelay(), )
     }
     public static updateInfo
     public static mergeInfo

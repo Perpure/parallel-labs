@@ -32,7 +32,7 @@ public class AirportsApp {
                     Map<Integer, String> airportsBroadcastedMap = airportsBroadcasted.getValue();
                     String origAirport = airportsBroadcastedMap.get(flightInfo._1._1);
                     String destAirport = airportsBroadcastedMap.get(flightInfo._1._2);
-                    return 
+                    return origAirport + " "
                 }
         )
 

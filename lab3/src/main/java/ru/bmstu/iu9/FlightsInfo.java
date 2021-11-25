@@ -4,5 +4,5 @@ import scala.Serializable;
 
 public class FlightsInfo implements Serializable {
     private int maxDelay;
-    
+    private int 
 }

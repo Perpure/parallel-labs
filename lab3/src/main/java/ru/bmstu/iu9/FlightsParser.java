@@ -24,7 +24,7 @@ public class FlightsParser {
 
         int airportOrigId = Integer.parseInt(row[AIRPORT_ORIG_ID_INDEX]);
         int airportDestId = Integer.parseInt(row[AIRPORT_DEST_ID_INDEX]);
-        return new Tuple2(Tuple2())
+        return new Tuple2<>(Tuple2())
     }
 
 }

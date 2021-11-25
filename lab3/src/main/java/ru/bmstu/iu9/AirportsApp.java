@@ -6,6 +6,8 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
+import java.util.Map;
+
 public class AirportsApp {
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
@@ -21,7 +23,7 @@ public class AirportsApp {
         JavaPairRDD<Integer, String> airports = airportsFile.filter(AirportsParser::isDataRow)
                 .mapToPair(AirportsParser::parseAirports);
 
-        Map<>
+        Map<Integer, String> airportsMap = 
 
 
     }

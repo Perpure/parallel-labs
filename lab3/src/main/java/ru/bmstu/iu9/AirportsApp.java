@@ -19,7 +19,8 @@ public class AirportsApp {
 
         JavaRDD<String> airportsFile = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaPairRDD<Integer, String> airports = airportsFile.filter(AirportsParser::isDataRow)
-                .mapToPair(AirportsParser::)
+                .mapToPair(AirportsParser::parseAirports);
+        
 
 
     }

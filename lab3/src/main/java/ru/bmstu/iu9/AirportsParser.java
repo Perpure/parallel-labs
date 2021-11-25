@@ -23,7 +23,7 @@ public class AirportsParser implements Serializable {
         return new Tuple2<>(airportID, airportName);
     }
 
-    public static boolean IsDataRow(String row) {
-        return row.startsWith(HEADER_PREFIX);
+    public static boolean isDataRow(String rowRaw) {
+        return rowRaw.startsWith(HEADER_PREFIX);
     }
 }

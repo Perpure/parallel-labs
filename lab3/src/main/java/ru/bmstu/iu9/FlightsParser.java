@@ -8,7 +8,7 @@ public class FlightsParser {
     private static final int DELAY_INDEX = 18;
     private static final int CANCELLED_INDEX = 19;
     private static final String FLIGHT_DELIMETER = ",";
-    private static final String HEADER_PREFIX = ""
+    private static final String HEADER_PREFIX = "\"YEAR\"";
 
     public static Tuple2<Tuple2<Integer, Integer>, Flight> parseFlights(String rowRaw){
         String[] row = rowRaw.split(FLIGHT_DELIMETER);
@@ -26,6 +26,10 @@ public class FlightsParser {
         int airportDestId = Integer.parseInt(row[AIRPORT_DEST_ID_INDEX]);
         return new Tuple2<>(new Tuple2<>(airportOrigId, airportDestId),
                             new Flight(delayTime, isCanceled, airportOrigId, airportDestId));
+    }
+
+    public static boolean isDataRow(String rowRaw) {
+        return !rowRaw.startsWith(HEADER_PREFIX);
     }
 
 }

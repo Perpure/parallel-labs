@@ -13,14 +13,14 @@ public class AirportsApp {
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> distFile = sc.textFile("664600583_T_ONTIME_sample.csv");
+        JavaRDD<String> distFile = sc.textFile("flights.csv");
         JavaPairRDD<Tuple2<Integer, Integer>, Flight> flights = distFile.filter(FlightsParser::isDataRow)
                 .mapToPair(FlightsParser::parseFlights);
         JavaPairRDD<Tuple2<Integer, Integer>, FlightsInfo> flightsInfo = flights.combineByKey(
                 FlightsInfo::createInfo, FlightsInfo::updateInfo, FlightsInfo::mergeInfo
         );
 
-        JavaRDD<String> airportsFile = sc.textFile("664600583_T_ONTIME_sample.csv");
+        JavaRDD<String> airportsFile = sc.textFile("airports.csv");
         JavaPairRDD<Integer, String> airports = airportsFile.filter(AirportsParser::isDataRow)
                 .mapToPair(AirportsParser::parseAirports);
 

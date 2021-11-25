@@ -30,7 +30,7 @@ public class AirportsApp {
         JavaRDD<String> infoRDD = flightsInfo.map(
                 flightInfo -> {
                     Map<Integer, String> airportsBroadcastedMap = airportsBroadcasted.getValue();
-                    String
+                    String origAirport = 
                 }
         )
 

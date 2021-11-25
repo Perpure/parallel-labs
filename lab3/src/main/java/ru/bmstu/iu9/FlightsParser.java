@@ -9,7 +9,7 @@ public class FlightsParser {
     private static final int CANCELLED_INDEX = 19;
     public static final String FLIGHT_DELIMETER = ",";
 
-    public static Tuple2<Tuple2<int, int>, Flight> parseFlights(String rowRaw){
+    public static Tuple2<Tuple2<Integer, Integer>, Flight> parseFlights(String rowRaw){
         String[] row = rowRaw.split(FLIGHT_DELIMETER);
 
         String delayRaw = row[DELAY_INDEX];

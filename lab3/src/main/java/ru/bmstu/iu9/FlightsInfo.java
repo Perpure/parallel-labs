@@ -39,6 +39,7 @@ public class FlightsInfo implements Serializable {
         );
     }
 
-    
+    @Override
+    public static String toString
 
 }

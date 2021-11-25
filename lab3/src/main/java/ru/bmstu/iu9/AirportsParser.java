@@ -11,7 +11,7 @@ public class AirportsParser implements Serializable {
     private static final int NAME_INDEX = 1;
     private static final int AIRPORT_TYPE = 0;
 
-    public static Tuple2<Integer, String> map(Text value, Mapper.Context context) {
+    public static Tuple2<Integer, String> (String row) {
         if (key.get() != 0) {
             String rowRaw = value.toString();
             rowRaw = rowRaw.substring(1, rowRaw.length() - 1);

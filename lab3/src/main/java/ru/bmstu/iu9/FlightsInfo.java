@@ -16,6 +16,8 @@ public class FlightsInfo implements Serializable {
     }
 
     public static createInfo(Flight flight) {
+        int isDelayed = flight.getDelay() > 0;
+        int
         return new FlightsInfo(flight.getDelay(), )
     }
     public static updateInfo

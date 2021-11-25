@@ -2,7 +2,6 @@ package ru.bmstu.iu9;
 
 import scala.Tuple2;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 public class AirportsParser implements Serializable {

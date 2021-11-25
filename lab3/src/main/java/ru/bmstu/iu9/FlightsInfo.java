@@ -42,8 +42,8 @@ public class FlightsInfo implements Serializable {
     @Override
     public String toString() {
         return "max delay: " + this.maxDelay + ", " +
-               "delayed: " + String.format("%.2f")this.delayedCount + ", " +
-               "cancelled: " + this.cancelledCount
+               "delayed: " + String.format("%.2f", (float)this.delayedCount / this.totalCount) + "%, " +
+               "cancelled: " + String.format("%.2f", (float)this.cancelledCount / this.totalCount) + "%";
     }
 
 }

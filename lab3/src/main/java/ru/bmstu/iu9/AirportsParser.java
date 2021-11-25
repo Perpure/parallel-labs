@@ -11,14 +11,14 @@ public class AirportsParser implements Serializable {
     private static final int NAME_INDEX = 1;
     private static final int AIRPORT_TYPE = 0;
 
-    public static Tuple2<Integer, String> (String row) {
-        if (key.get() != 0) {
-            String rowRaw = value.toString();
-            rowRaw = rowRaw.substring(1, rowRaw.length() - 1);
-            String[] row = rowRaw.split(DELIMITER_REGEX);
-
-            String airportName = row[NAME_INDEX];
-            int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX]);
-        }
+    private static String removeQuotes(String s) {
+        return s.substring(1, s.length() - 1);
+    }
+    public static Tuple2<Integer, String> parseAirports(String rowRaw) {
+        rowRaw = removeQuotes(rowRaw);
+        String[] row = rowRaw.split(DELIMITER_REGEX);
+        String airportName = row[NAME_INDEX];
+        int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX]);
+        return Tuple2<>(airportID, airportName);
     }
 }

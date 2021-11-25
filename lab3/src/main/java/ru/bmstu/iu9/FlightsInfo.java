@@ -15,8 +15,8 @@ public class FlightsInfo implements Serializable {
         this.totalCount = totalCount;
     }
 
-    public static createInfo () {
-        
+    public static createInfo(Flight flight) {
+                
     }
     public static updateInfo
     public static mergeInfo

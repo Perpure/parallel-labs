@@ -24,7 +24,9 @@ public class FlightsInfo implements Serializable {
     public static FlightsInfo updateInfo(FlightsInfo, Flight flight) {
         int isDelayed = flight.getDelay() > 0 ? 1 : 0;
         int isCancelled = flight.isCancelled() ? 1 : 0;
-        
+        if isDelayed {
+            
+        }
     }
     public static mergeInfo
 }

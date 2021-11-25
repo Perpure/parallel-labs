@@ -24,6 +24,6 @@ public class AirportsParser implements Serializable {
     }
 
     public static boolean IsDataRow(String row) {
-        
+        return row.
     }
 }

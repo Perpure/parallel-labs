@@ -18,5 +18,5 @@ mvn package
 hadoop fs -copyFromLocal flights.csv
 hadoop fs -copyFromLocal airports.csv
 export HADOOP_CLASSPATH=target/AirportsApp.jar
-hadoop bmstu.iu9.AirportsApp flights.csv airports.csv output
+hadoop ru.bmstu.iu9.AirportsApp flights.csv airports.csv output
 hadoop fs -copyToLocal output

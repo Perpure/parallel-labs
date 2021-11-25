@@ -14,11 +14,14 @@ public class AirportsParser implements Serializable {
     private static String removeQuotes(String s) {
         return s.substring(1, s.length() - 1);
     }
+
     public static Tuple2<Integer, String> parseAirports(String rowRaw) {
         rowRaw = removeQuotes(rowRaw);
         String[] row = rowRaw.split(DELIMITER_REGEX);
         String airportName = row[NAME_INDEX];
         int airportID = Integer.parseInt(row[AIRPORT_ID_INDEX]);
-        return Tuple2<>(airportID, airportName);
+        return new Tuple2<>(airportID, airportName);
     }
+
+    public static 
 }

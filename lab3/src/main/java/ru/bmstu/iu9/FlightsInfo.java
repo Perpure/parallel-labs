@@ -6,10 +6,14 @@ public class FlightsInfo implements Serializable {
     private int maxDelay;
     private int lateCount;
     private int cancelledCount;
+    private  int totalCount;
 
-    public FlightsInfo(int maxDelay, int lateCount, int cancelledCount) {
+    public FlightsInfo(int maxDelay, int lateCount, int cancelledCount, int totalCount) {
         this.maxDelay = maxDelay;
         this.lateCount = lateCount;
         this.cancelledCount = cancelledCount;
+        this.totalCount = totalCount;
     }
+
+    
 }

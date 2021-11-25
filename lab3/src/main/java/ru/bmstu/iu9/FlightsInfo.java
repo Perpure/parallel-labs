@@ -1,4 +1,7 @@
 package ru.bmstu.iu9;
 
-public class FlightsInfo {
+import scala.Serializable;
+
+public class FlightsInfo implements Serializable {
+    
 }

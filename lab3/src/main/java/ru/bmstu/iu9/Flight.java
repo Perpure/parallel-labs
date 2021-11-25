@@ -1,6 +1,6 @@
 package ru.bmstu.iu9;
 
-import scala.Serializable;
+import java.io.Serializable;
 
 public class Flight implements Serializable {
     private float delay;

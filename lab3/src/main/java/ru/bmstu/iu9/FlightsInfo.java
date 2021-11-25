@@ -1,6 +1,6 @@
 package ru.bmstu.iu9;
 
-import scala.Serializable;
+import java.io.Serializable;
 
 public class FlightsInfo implements Serializable {
     private float maxDelay;
@@ -36,7 +36,7 @@ public class FlightsInfo implements Serializable {
                 info1.delayedCount + info2.delayedCount,
                 info1.cancelledCount + info2.cancelledCount,
                 info1.totalCount + info2.totalCount
-        )
+        );
     }
 
 }

@@ -15,6 +15,7 @@ public class AirportsApp {
         JavaPairRDD<Tuple2<Integer, Integer>, Flight> flights = distFile.mapToPair(FlightsParser::parseFlights);
         JavaPairRDD<Tuple2<Integer, Integer>, FlightsInfo> flightsInfo = flights.combineByKey(
                 FlightsInfo::createInfo, FlightsInfo::updateInfo, FlightsInfo::mergeInfo
-        )
+        );
+
     }
 }

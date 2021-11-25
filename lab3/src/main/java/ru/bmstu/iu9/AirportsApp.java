@@ -24,7 +24,8 @@ public class AirportsApp {
                 .mapToPair(AirportsParser::parseAirports);
 
         Map<Integer, String> airportsMap = airports.collectAsMap();
-        final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(stringAirportDataMap);
+        final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(airportsMap);
+        
 
 
     }

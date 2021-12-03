@@ -3,10 +3,10 @@ package ru.bmstu.iu9;
 import java.util.ArrayList;
 
 public class GetResultMessage {
-    private final int packageId;
+    private final String packageId;
     private final ArrayList<String> testResults;
 
-    public int getPackageId() {
+    public String getPackageId() {
         return packageId;
     }
 
@@ -14,7 +14,7 @@ public class GetResultMessage {
         return testResults;
     }
 
-    public GetResultMessage(int packageId, ArrayList<String> testResults) {
+    public GetResultMessage(String packageId, ArrayList<String> testResults) {
         this.packageId = packageId;
         this.testResults = testResults;
     }

@@ -18,4 +18,9 @@ public class ActorStore extends AbstractActor {
     private void storeTestResult(StoreMessage testResult) {
 
     }
+
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }

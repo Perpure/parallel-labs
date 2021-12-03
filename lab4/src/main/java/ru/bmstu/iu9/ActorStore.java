@@ -2,7 +2,6 @@ package ru.bmstu.iu9;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
-import scala.Int;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +14,7 @@ public class ActorStore extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(StoreMessage.class, this::storeTestResult)
+                .match(GetResultMessage.class, this::getResult)
                 .build();
     }
 

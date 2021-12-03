@@ -1,4 +1,10 @@
 package ru.bmstu.iu9;
 
-public class ActorRunTest {
+import akka.actor.AbstractActor;
+
+public class ActorRunTest extends AbstractActor {
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }

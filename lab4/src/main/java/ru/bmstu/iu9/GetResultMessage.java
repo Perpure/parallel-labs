@@ -3,8 +3,8 @@ package ru.bmstu.iu9;
 import java.util.ArrayList;
 
 public class GetResultMessage {
-    private int packageId;
-    private ArrayList<String> testResults;
+    private final int packageId;
+    private final ArrayList<String> testResults;
 
     public int getPackageId() {
         return packageId;

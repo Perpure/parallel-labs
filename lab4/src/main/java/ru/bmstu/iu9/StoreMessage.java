@@ -1,8 +1,8 @@
 package ru.bmstu.iu9;
 
 public class StoreMessage {
-    private int packageId;
-    private String testResult;
+    private final int packageId;
+    private final String testResult;
 
 
     public StoreMessage(int packageId, String testResult) {

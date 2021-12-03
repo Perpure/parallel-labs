@@ -12,10 +12,14 @@ public class ActorStore extends AbstractActor {
 
     @Override
     public Receive createRecieve() {
-        return ReceiveBuilder.create()
+        return ReceiveBuilder.create();
     }
 
     private void storeTestResult(StoreMessage testResult) {
-
+        if (testResults.containsKey(testResult.getPackageId())) {
+            testResults.get(testResult.getPackageId()).add(testResult.getTestResult());
+        } else {
+            testResults.put(testResult.getPackageId(), )
+        }
     }
 }

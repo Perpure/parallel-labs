@@ -16,6 +16,6 @@ public class ActorRunTest extends AbstractActor {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;
-        return invocable.invokeFunction(functionName, params)
+        return invocable.invokeFunction(functionName, params).toString();
     }
 }

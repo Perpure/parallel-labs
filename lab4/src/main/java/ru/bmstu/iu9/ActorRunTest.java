@@ -1,6 +1,7 @@
 package ru.bmstu.iu9;
 
 import akka.actor.AbstractActor;
+import akka.japi.pf.ReceiveBuilder;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -11,7 +12,9 @@ import java.util.ArrayList;
 public class ActorRunTest extends AbstractActor {
     @Override
     public Receive createReceive() {
-        return null;
+        return ReceiveBuilder.create()
+                .match(RunTestMessage.class, this::runTestMessage)
+                .build();
     }
 
     private static String evalScript(String jscript, String functionName, ArrayList<Object> params) throws ScriptException, NoSuchMethodException {
@@ -21,12 +24,19 @@ public class ActorRunTest extends AbstractActor {
         return invocable.invokeFunction(functionName, params).toString();
     }
 
-    private String runTestMessage(RunTestMessage test) {
+    private void runTestMessage(RunTestMessage test) {
         String response;
         try {
-            String result = evalScript(test.getJsScript(), test.getFunctionName(), test.getParams())
+            String result = evalScript(test.getJsScript(), test.getFunctionName(), test.getParams());
+            if (result.equals(test.getExpectedResult())) {
+                response = String.format("OK %s", test.getTestName());
+            } else {
+                response = String.format("FAIL %s: returned %s, expected %s",
+                        test.getTestName(), result, test.getExpectedResult());
+            }
         } catch (ScriptException | NoSuchMethodException err) {
-            response = ""
+            response = String.format("Error during test %s run: %s", test.getTestName(), err);
         }
+        sender().tell(new StoreMessage(test.getPackageId(), response), self());
     }
 }

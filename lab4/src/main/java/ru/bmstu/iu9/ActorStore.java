@@ -28,4 +28,8 @@ public class ActorStore extends AbstractActor {
     }
 
 
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }

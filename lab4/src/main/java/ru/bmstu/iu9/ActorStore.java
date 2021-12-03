@@ -5,6 +5,7 @@ import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ActorStore extends AbstractActor {
     private Map<Integer, ArrayList<String>> testResults = new HashMap<>();

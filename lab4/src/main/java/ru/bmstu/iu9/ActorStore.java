@@ -27,7 +27,7 @@ public class ActorStore extends AbstractActor {
             testsResults.put(testResult.getPackageId(), newTestList);
         }
     }
-
+    a
     private void getResult(GetResultMessage query) {
         ArrayList<String> testResults = testsResults.get(query.getPackageId());
         sender().tell(new TestResultsMessage(query.getPackageId(), testResults),

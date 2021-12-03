@@ -9,4 +9,12 @@ public class StoreMessage {
         this.packageId = packageId;
         this.testResult = testResult;
     }
+
+    public int getPackageId() {
+        return packageId;
+    }
+
+    public String getTestResult() {
+        return testResult;
+    }
 }

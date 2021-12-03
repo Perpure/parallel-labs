@@ -25,7 +25,7 @@ import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.PathMatchers.longSegment;
 
-public class JacksonExampleTest extends AllDirectives {
+public class AkkaMain extends AllDirectives {
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below

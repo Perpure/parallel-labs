@@ -5,6 +5,7 @@ import akka.actor.AbstractActor;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 public class ActorRunTest extends AbstractActor {
     @Override
@@ -12,7 +13,7 @@ public class ActorRunTest extends AbstractActor {
         return null;
     }
 
-    private static String evalScript(String jscript, String functionName, String params) {
+    private static String evalScript(String jscript, String functionName, String params) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;

@@ -1,2 +1,5 @@
-package ru.bmstu.iu9;public class RunTestMessage {
+package ru.bmstu.iu9;
+
+public class RunTestMessage {
+    
 }

@@ -12,7 +12,9 @@ public class ActorStore extends AbstractActor {
 
     @Override
     public Receive createRecieve() {
-        return ReceiveBuilder.create();
+        return ReceiveBuilder.create()
+                .match(StoreMessage.class, this::storeTestResult)
+                .build();
     }
 
     private void storeTestResult(StoreMessage testResult) {
@@ -25,5 +27,5 @@ public class ActorStore extends AbstractActor {
         }
     }
 
-    
+
 }

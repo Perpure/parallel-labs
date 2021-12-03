@@ -12,7 +12,7 @@ public class ActorRunTest extends AbstractActor {
         return null;
     }
 
-    private static String evalScript(String jscript, function) {
+    private static String evalScript(String jscript, String functionName, String ) {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;

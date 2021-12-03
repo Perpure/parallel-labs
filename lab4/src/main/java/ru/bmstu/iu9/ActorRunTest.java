@@ -8,5 +8,7 @@ public class ActorRunTest extends AbstractActor {
         return null;
     }
 
-    private 
+    private static evalScript() {
+        
+    }
 }

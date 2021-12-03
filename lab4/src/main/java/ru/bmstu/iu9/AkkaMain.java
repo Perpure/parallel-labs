@@ -35,7 +35,7 @@ public class AkkaMain extends AllDirectives {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
         //In order to access all directives we need an instance where the routes are define.
-        JacksonExampleTest app = new JacksonExampleTest();
+        AkkaMain app = new AkkaMain();
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,

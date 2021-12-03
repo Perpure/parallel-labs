@@ -15,9 +15,11 @@ public class AirportsApp {
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("AirportsApp");
         JavaSparkContext sc = new JavaSparkContext(conf);
+
         JavaRDD<String> distFile = sc.textFile("flights.csv");
         JavaPairRDD<Tuple2<Integer, Integer>, Flight> flights = distFile.filter(FlightsParser::isDataRow)
                 .mapToPair(FlightsParser::parseFlights);
+
         JavaPairRDD<Tuple2<Integer, Integer>, FlightsInfo> flightsInfo = flights.combineByKey(
                 FlightsInfo::createInfo, FlightsInfo::updateInfo, FlightsInfo::mergeInfo
         );

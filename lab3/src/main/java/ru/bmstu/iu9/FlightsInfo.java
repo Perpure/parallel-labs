@@ -3,10 +3,10 @@ package ru.bmstu.iu9;
 import java.io.Serializable;
 
 public class FlightsInfo implements Serializable {
-    private float maxDelay;
-    private int delayedCount;
-    private int cancelledCount;
-    private int totalCount;
+    private final float maxDelay;
+    private final int delayedCount;
+    private final int cancelledCount;
+    private final int totalCount;
 
     public FlightsInfo(float maxDelay, int delayedCount, int cancelledCount, int totalCount) {
         this.maxDelay = maxDelay;

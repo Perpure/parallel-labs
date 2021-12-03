@@ -19,7 +19,11 @@ public class ActorStore extends AbstractActor {
         if (testResults.containsKey(testResult.getPackageId())) {
             testResults.get(testResult.getPackageId()).add(testResult.getTestResult());
         } else {
-            testResults.put(testResult.getPackageId(), new ArrayList<>(testResult.getTestResult(),));
+            ArrayList<String> newTestList = new ArrayList<>();
+            newTestList.add(testResult.getTestResult());
+            testResults.put(testResult.getPackageId(), newTestList);
         }
     }
+
+    
 }

@@ -7,4 +7,6 @@ public class ActorRunTest extends AbstractActor {
     public Receive createReceive() {
         return null;
     }
+
+    private 
 }

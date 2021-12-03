@@ -1,6 +1,6 @@
 package ru.bmstu.iu9;
 
 public class StoreMessage {
-    private String id;
-    private 
+    private String packageId;
+    private
 }

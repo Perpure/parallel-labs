@@ -18,6 +18,9 @@ public class ActorRunTest extends AbstractActor {
     }
 
     private static String evalScript(String jscript, String functionName, ArrayList<Object> params) throws ScriptException, NoSuchMethodException {
+        System.out.println(jscript);
+        System.out.println(functionName);
+        System.out.println(params);
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;

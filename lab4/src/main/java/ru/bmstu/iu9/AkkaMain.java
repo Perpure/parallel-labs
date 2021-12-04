@@ -53,12 +53,9 @@ public class AkkaMain extends AllDirectives {
     private Route createRoute() {
 
         return route(
-                get(() ->
-                        pathPrefix("packageId", (id) -> {
-                                    final CompletionStage<Optional<Item>> futureMaybeItem = fetchItem(id);
-                                    return
-                                    );
-                                }))),
+                get(() -> pathPrefix("packageId", (id) -> {
+                                    
+                                })),
                 post(() ->
                         path("create-order", () ->
                                 entity(Jackson.unmarshaller(Order.class), order -> {

@@ -51,7 +51,9 @@ public class AkkaMain extends AllDirectives {
                 .thenAccept(unbound -> system.terminate()); // and shutdown when done
     }
 
-    p
+    public AkkaMain() {
+        
+    }
 
     private Route createRoute() {
 

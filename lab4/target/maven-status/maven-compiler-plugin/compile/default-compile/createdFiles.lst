@@ -1,0 +1,12 @@
+ru/bmstu/iu9/JsonTest.class
+ru/bmstu/iu9/CreateRouterInstance.class
+ru/bmstu/iu9/StoreMessage.class
+ru/bmstu/iu9/GetStoredMessage.class
+ru/bmstu/iu9/ActorRouter.class
+ru/bmstu/iu9/RunTestMessage.class
+ru/bmstu/iu9/ActorRunTest.class
+ru/bmstu/iu9/JsonRequest.class
+ru/bmstu/iu9/TestResultsMessage.class
+ru/bmstu/iu9/ActorStore.class
+ru/bmstu/iu9/GetResultMessage.class
+ru/bmstu/iu9/AkkaMain.class

@@ -1,2 +1,5 @@
-package ru.bmstu.iu9;public class GetStoredMessage {
+package ru.bmstu.iu9;
+
+public class GetStoredMessage {
+    
 }

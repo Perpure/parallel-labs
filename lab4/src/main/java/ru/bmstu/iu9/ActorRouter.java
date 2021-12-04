@@ -29,8 +29,8 @@ public class ActorRouter extends AbstractActor {
                     jsonRequest.getPackageId(),
                     jsonRequest.getJsScript(),
                     jsonRequest.getFunctionName(),
-                    test.getExpectedResult(),
                     test.getTestName(),
+                    test.getExpectedResult(),
                     test.getParams()
             ), actorStore);
         }

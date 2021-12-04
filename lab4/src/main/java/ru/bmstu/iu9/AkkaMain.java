@@ -3,6 +3,7 @@ package ru.bmstu.iu9;
 
 import akka.Done;
 import akka.NotUsed;
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
@@ -28,6 +29,7 @@ import java.util.concurrent.Future;
 import static akka.http.javadsl.server.PathMatchers.longSegment;
 
 public class AkkaMain extends AllDirectives {
+    private ActorRef router;
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
@@ -52,7 +54,7 @@ public class AkkaMain extends AllDirectives {
     }
 
     public AkkaMain() {
-        
+        router = 
     }
 
     private Route createRoute() {

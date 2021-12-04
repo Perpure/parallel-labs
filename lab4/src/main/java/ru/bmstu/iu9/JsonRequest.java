@@ -10,9 +10,9 @@ public class JsonRequest {
     private final String jsScript;
 
     @JsonProperty
-    private final String packageId;
+    private final String functionName;
 
     @JsonProperty
-    private final String packageId;
+    private final String test;
 
 }

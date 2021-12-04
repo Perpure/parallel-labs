@@ -7,7 +7,7 @@ public class JsonRequest {
     private final String packageId;
 
     @JsonProperty
-    private final String jScript;
+    private final String jsScript;
 
     @JsonProperty
     private final String packageId;

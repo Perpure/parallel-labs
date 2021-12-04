@@ -30,7 +30,7 @@ import java.util.concurrent.Future;
 import static akka.http.javadsl.server.PathMatchers.longSegment;
 
 public class AkkaMain extends AllDirectives {
-    private ActorRef router;
+
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
@@ -53,57 +53,5 @@ public class AkkaMain extends AllDirectives {
         binding
                 .thenCompose(ServerBinding::unbind) // trigger unbinding from the port
                 .thenAccept(unbound -> system.terminate()); // and shutdown when done
-    }
-
-    private Route createRoute() {
-
-        return route(
-                get(() -> pathPrefix("packageId", (id) -> {
-                    Future<Object> response = Patterns.ask(ActorRouter)
-                })),
-                post(() ->
-                        path("create-order", () ->
-                                entity(Jackson.unmarshaller(Order.class), order -> {
-                                    CompletionStage<Done> futureSaved = saveOrder(order);
-                                    return onSuccess(futureSaved, done ->
-                                            complete("order created")
-                                    );
-                                })))
-        );
-    }
-
-    private static class Item {
-
-        final String name;
-        final long id;
-
-        @JsonCreator
-        Item(@JsonProperty("name") String name,
-             @JsonProperty("id") long id) {
-            this.name = name;
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public long getId() {
-            return id;
-        }
-    }
-
-    private static class Order {
-
-        final List<Item> items;
-
-        @JsonCreator
-        Order(@JsonProperty("items") List<Item> items) {
-            this.items = items;
-        }
-
-        public List<Item> getItems() {
-            return items;
-        }
     }
 }

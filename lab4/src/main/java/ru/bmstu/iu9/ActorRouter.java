@@ -3,7 +3,9 @@ package ru.bmstu.iu9;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
+import akka.routing.ActorRefRoutee;
 import akka.routing.Routee;
+import akka.routing.Router;
 
 import java.util.ArrayList;
 
@@ -22,7 +24,10 @@ public class ActorRouter extends AbstractActor {
         ArrayList<Routee> workers = new ArrayList<>();
         for (int i = 0; i < NUM_WORKERS; i++) {
             ActorRef worker = getContext().actorOf(Props.create(ActorRunTest.class));
-            
+            getContext().watch(worker);
+            workers.add(new ActorRefRoutee(worker));
         }
+
+        router = new Router(new R)
     }
 }

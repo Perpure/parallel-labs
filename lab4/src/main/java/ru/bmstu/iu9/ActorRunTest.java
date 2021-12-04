@@ -37,6 +37,7 @@ public class ActorRunTest extends AbstractActor {
         } catch (ScriptException | NoSuchMethodException err) {
             response = String.format("Error during test %s run: %s", test.getTestName(), err);
         }
+        System.out.println(response);
         sender().tell(new StoreMessage(test.getPackageId(), response), self());
     }
 }

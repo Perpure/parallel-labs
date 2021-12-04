@@ -18,7 +18,7 @@ public class ActorRouter extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(GetResultMessage.class, this::tellStoreActor)
+                .match(GetStoredMessage.class, this::tellStoreActor)
                 .match(JsonRequest.class, this::readJson)
                 .build();
     }
@@ -36,7 +36,7 @@ public class ActorRouter extends AbstractActor {
         }
     }
 
-    private void tellStoreActor(GetResultMessage msg) {
+    private void tellStoreActor(GetStoredMessage msg) {
         actorStore.tell(msg, sender());
     }
 

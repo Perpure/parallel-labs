@@ -27,7 +27,7 @@ public class CreateRouterInstance {
                 get(() -> parameter("packageId", (id) -> {
                     Future<Object> response = Patterns.ask(
                             router,
-                            new GetResultMessage(id),
+                            new GetStoredMessage(id),
                             Timeout.create(Duration.ofSeconds(30)));
                     return completeOKWithFuture(response, Jackson.marshaller());
                 })),

@@ -13,6 +13,6 @@ public class JsonRequest {
     private final String functionName;
 
     @JsonProperty
-    private final String test;
+    private final String tests;
 
 }

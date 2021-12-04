@@ -14,7 +14,7 @@ public class ActorStore extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(StoreMessage.class, this::storeTestResult)
-                .match(GetResultMessage.class, this::getResult)
+                .match(GetStoredMessage.class, this::getResult)
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class ActorStore extends AbstractActor {
         }
     }
 
-    private void getResult(GetResultMessage query) {
+    private void getResult(GetStoredMessage query) {
         ArrayList<String> testResults = testsResults.get(query.getPackageId());
         sender().tell(new TestResultsMessage(query.getPackageId(), testResults),
                       getContext().getParent());

@@ -54,12 +54,9 @@ public class AkkaMain extends AllDirectives {
 
         return route(
                 get(() ->
-                        pathPrefix("packageId", (id) ->
-                                path(longSegment(), (Long id) -> {
+                        pathPrefix("packageId", (id) -> {
                                     final CompletionStage<Optional<Item>> futureMaybeItem = fetchItem(id);
-                                    return onSuccess(futureMaybeItem, maybeItem ->
-                                            maybeItem.map(item -> completeOK(item, Jackson.marshaller()))
-                                                    .orElseGet(() -> complete(StatusCodes.NOT_FOUND, "Not Found"))
+                                    return
                                     );
                                 }))),
                 post(() ->

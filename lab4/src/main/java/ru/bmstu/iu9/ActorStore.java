@@ -30,6 +30,7 @@ public class ActorStore extends AbstractActor {
 
     private void getResult(GetStoredMessage query) {
         ArrayList<String> testResults = testsResults.get(query.getPackageId());
+        System.out.println(testResults);
         sender().tell(new TestResultsMessage(query.getPackageId(), testResults),
                       getContext().getParent());
     }

@@ -24,6 +24,7 @@ public class ActorRunTest extends AbstractActor {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;
+
         return invocable.invokeFunction(functionName, params).toString();
     }
 
@@ -31,6 +32,7 @@ public class ActorRunTest extends AbstractActor {
         String response;
         try {
             String result = evalScript(test.getJsScript(), test.getFunctionName(), test.getParams());
+            System.out.println(result);
             if (result.equals(test.getExpectedResult())) {
                 response = String.format("OK %s", test.getTestName());
             } else {

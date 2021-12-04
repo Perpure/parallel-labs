@@ -28,7 +28,7 @@ public class CreateRouterInstance {
                     Future<Object> response = Patterns.ask(
                             router,
                             new GetStoredMessage(id),
-                            Timeout.create(Duration.ofSeconds(30)));
+                            Timeout.create(Duration.ofSeconds(15)));
                     return completeOKWithFuture(response, Jackson.marshaller());
                 })),
                 post(() -> entity(Jackson.unmarshaller(JsonRequest.class), (jsonRequest) -> {

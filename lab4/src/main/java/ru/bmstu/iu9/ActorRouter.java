@@ -37,7 +37,6 @@ public class ActorRouter extends AbstractActor {
     }
 
     private void tellStoreActor(GetStoredMessage msg) {
-        System.out.println(msg.getPackageId());
         actorStore.tell(msg, sender());
     }
 

@@ -5,6 +5,7 @@ import akka.Done;
 import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
@@ -34,6 +35,7 @@ public class AkkaMain extends AllDirectives {
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
         ActorSystem system = ActorSystem.create("Testing system");
+        router = system.actorOf(Props.create(ActorRouter.class));
 
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
@@ -51,10 +53,6 @@ public class AkkaMain extends AllDirectives {
         binding
                 .thenCompose(ServerBinding::unbind) // trigger unbinding from the port
                 .thenAccept(unbound -> system.terminate()); // and shutdown when done
-    }
-
-    public AkkaMain() {
-        router = 
     }
 
     private Route createRoute() {

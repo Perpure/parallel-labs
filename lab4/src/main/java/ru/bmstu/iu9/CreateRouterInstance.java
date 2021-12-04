@@ -1,2 +1,4 @@
-package ru.bmstu.iu9;public class CreateRouterInstance {
+package ru.bmstu.iu9;
+
+public class CreateRouterInstance {
 }

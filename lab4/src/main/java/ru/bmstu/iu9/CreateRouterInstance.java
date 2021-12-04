@@ -5,9 +5,13 @@ import akka.actor.ActorRef;
 import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
+import akka.util.Timeout;
 
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Future;
+
+import static akka.http.javadsl.server.Directives.*;
 
 public class CreateRouterInstance {
     private ActorRef router;
@@ -20,17 +24,16 @@ public class CreateRouterInstance {
     public Route createRoute() {
 
         return route(
-                get(() -> pathPrefix("packageId", (id) -> {
-                    Future<Object> response = Patterns.ask(ActorRouter)
+                get(() -> parameter("packageId", (id) -> {
+                    Future<Object> response = Patterns.ask(
+                            router,
+                            new GetResultMessage(id),
+                            Timeout.create(Duration.ofSeconds(30)));
+                    return completeOKWithFuture(response, Jackson.marshaller());
                 })),
-                post(() ->
-                        path("create-order", () ->
-                                entity(Jackson.unmarshaller(Order.class), order -> {
-                                    CompletionStage<Done> futureSaved = saveOrder(order);
-                                    return onSuccess(futureSaved, done ->
-                                            complete("order created")
-                                    );
-                                })))
+                post(() -> entity(Jackson.unmarshaller(JsonRequest.class), (jsonRequest) ->
+                    router.tell(jsonRequest, ActorRef.)
+                }))
         );
     }
 }

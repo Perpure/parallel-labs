@@ -27,7 +27,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Future;
 
-import static akka.http.javadsl.server.PathMatchers.longSegment;
+
 
 public class AkkaMain extends AllDirectives {
 

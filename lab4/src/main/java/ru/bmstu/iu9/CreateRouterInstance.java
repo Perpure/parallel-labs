@@ -6,10 +6,10 @@ import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.util.Timeout;
+import scala.concurrent.Future;
 
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Future;
 
 import static akka.http.javadsl.server.Directives.*;
 
@@ -31,8 +31,9 @@ public class CreateRouterInstance {
                             Timeout.create(Duration.ofSeconds(30)));
                     return completeOKWithFuture(response, Jackson.marshaller());
                 })),
-                post(() -> entity(Jackson.unmarshaller(JsonRequest.class), (jsonRequest) ->
-                    router.tell(jsonRequest, ActorRef.)
+                post(() -> entity(Jackson.unmarshaller(JsonRequest.class), (jsonRequest) -> {
+                    router.tell(jsonRequest, ActorRef.noSender());
+                    return complete("Request received");
                 }))
         );
     }

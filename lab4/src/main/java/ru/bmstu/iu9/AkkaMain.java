@@ -29,7 +29,7 @@ public class AkkaMain extends AllDirectives {
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
-        ActorSystem system = ActorSystem.create("routes");
+        ActorSystem system = ActorSystem.create("Testing system");
 
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
@@ -48,17 +48,7 @@ public class AkkaMain extends AllDirectives {
                 .thenCompose(ServerBinding::unbind) // trigger unbinding from the port
                 .thenAccept(unbound -> system.terminate()); // and shutdown when done
     }
-
-    // (fake) async database query api
-    private CompletionStage<Optional<Item>> fetchItem(long itemId) {
-        return CompletableFuture.completedFuture(Optional.of(new Item("foo", itemId)));
-    }
-
-    // (fake) async database query api
-    private CompletionStage<Done> saveOrder(final Order order) {
-        return CompletableFuture.completedFuture(Done.getInstance());
-    }
-
+    
     private Route createRoute() {
 
         return route(

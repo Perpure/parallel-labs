@@ -13,6 +13,7 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.model.StatusCodes;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Future;
 
 import static akka.http.javadsl.server.PathMatchers.longSegment;
 
@@ -49,13 +51,14 @@ public class AkkaMain extends AllDirectives {
                 .thenAccept(unbound -> system.terminate()); // and shutdown when done
     }
 
+    p
 
     private Route createRoute() {
 
         return route(
                 get(() -> pathPrefix("packageId", (id) -> {
-                                    
-                                })),
+                    Future<Object> response = Patterns.ask(ActorRouter)
+                })),
                 post(() ->
                         path("create-order", () ->
                                 entity(Jackson.unmarshaller(Order.class), order -> {

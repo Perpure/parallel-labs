@@ -48,12 +48,13 @@ public class AkkaMain extends AllDirectives {
                 .thenCompose(ServerBinding::unbind) // trigger unbinding from the port
                 .thenAccept(unbound -> system.terminate()); // and shutdown when done
     }
-    
+
+
     private Route createRoute() {
 
         return route(
                 get(() ->
-                        pathPrefix("item", () ->
+                        pathPrefix("packageId", (id) ->
                                 path(longSegment(), (Long id) -> {
                                     final CompletionStage<Optional<Item>> futureMaybeItem = fetchItem(id);
                                     return onSuccess(futureMaybeItem, maybeItem ->

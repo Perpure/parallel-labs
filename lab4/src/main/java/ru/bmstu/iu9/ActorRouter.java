@@ -19,8 +19,21 @@ public class ActorRouter extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GetResultMessage.class, this::tellStoreActor)
-                .match()
+                .match(JsonRequest.class, this::readJson)
                 .build();
+    }
+
+    private void readJson(JsonRequest jsonRequest) {
+        for (JsonTest test: jsonRequest.getTests()) {
+            router.route(new RunTestMessage(
+                    jsonRequest.getPackageId(),
+                    jsonRequest.getJsScript(),
+                    jsonRequest.getFunctionName(),
+                    test.getExpectedResult(),
+                    test.getTestName(),
+                    test.getParams()
+            ), actorStore);
+        }
     }
 
     private void tellStoreActor(GetResultMessage msg) {

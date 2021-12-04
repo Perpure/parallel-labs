@@ -3,13 +3,13 @@ package ru.bmstu.iu9;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JsonTest {
-    @JsonProperty
-    private final String ;
+    @JsonProperty("testName")
+    private final String testName;
 
     @JsonProperty
-    private final String packageId;
+    private final String expectedResult;
 
     @JsonProperty
-    private final String packageId;
+    private final String params;
 
 }

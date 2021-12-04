@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.routing.ActorRefRoutee;
+import akka.routing.RoundRobinRoutingLogic;
 import akka.routing.Routee;
 import akka.routing.Router;
 
@@ -11,14 +12,23 @@ import java.util.ArrayList;
 
 public class ActorRouter extends AbstractActor {
     private static final int NUM_WORKERS = 3;
+    private final ActorRef actorStore;
+    private final Router router;
 
     @Override
     public Receive createReceive() {
-        return null;
+        return receiveBuilder()
+                .match(GetResultMessage.class, this::tellStoreActor)
+                .match()
+                .build();
+    }
+
+    private void tellStoreActor(GetResultMessage msg) {
+        actorStore.tell(msg, sender());
     }
 
     public ActorRouter() {
-        ActorRef actorStore = getContext().actorOf(Props.create(ActorStore.class));
+        actorStore = getContext().actorOf(Props.create(ActorStore.class));
         getContext().watch(actorStore);
 
         ArrayList<Routee> workers = new ArrayList<>();
@@ -28,6 +38,6 @@ public class ActorRouter extends AbstractActor {
             workers.add(new ActorRefRoutee(worker));
         }
 
-        router = new Router(new R)
+        router = new Router(new RoundRobinRoutingLogic(), workers);
     }
 }

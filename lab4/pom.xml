@@ -91,8 +91,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <defaultGoal>compile</defaultGoal>
-        <outputDirectory>bin</outputDirectory>
+        <defaultGoal>compile</defaultGoal><outputDirectory>bin</outputDirectory>
         <finalName>${project.artifactId}</finalName>
     </build>
 </project>

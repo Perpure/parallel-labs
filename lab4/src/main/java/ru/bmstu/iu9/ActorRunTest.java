@@ -18,21 +18,17 @@ public class ActorRunTest extends AbstractActor {
     }
 
     private static String evalScript(String jscript, String functionName, ArrayList<Object> params) throws ScriptException, NoSuchMethodException {
-        System.out.println(jscript);
-        System.out.println(functionName);
-        System.out.println(params);
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;
 
-        return invocable.invokeFunction(functionName, params).toString();
+        return invocable.invokeFunction(functionName, params.toArray()).toString();
     }
 
     private void runTestMessage(RunTestMessage test) {
         String response;
         try {
             String result = evalScript(test.getJsScript(), test.getFunctionName(), test.getParams());
-            System.out.println(result);
             if (result.equals(test.getExpectedResult())) {
                 response = String.format("OK %s", test.getTestName());
             } else {

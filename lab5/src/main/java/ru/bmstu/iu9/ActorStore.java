@@ -1,4 +1,12 @@
 package ru.bmstu.iu9;
 
-public class ActorStore {
+import akka.actor.AbstractActor;
+
+public class ActorStore extends AbstractActor {
+
+
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }

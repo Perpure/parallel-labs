@@ -11,6 +11,7 @@ import akka.stream.javadsl.Flow;
 import akka.japi.Pair;
 
 import java.time.Duration;
+import java.util.concurrent.CompletableFuture;
 
 public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
@@ -22,22 +23,28 @@ public class HttpFlow {
             ActorMaterializer materializer, ActorRef actor
     ) {
         return Flow.of(HttpRequest.class)
-                .map(req -> {
-                    Query query = req.getUri().query();
+                .map(request -> {
+                    Query query = request.getUri().query();
                     return new Pair<>(
                             query.getOrElse(TEST_URL_ARG_NAME, "http://rambler.ru"),
                             Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
                     );
                 })
-                .mapAsync(NUM_WORKERS, req -> Patterns.ask(
+                .mapAsync(NUM_WORKERS, request -> Patterns.ask(
                         actor,
-                        new GetMessage(req.first()),
+                        new GetMessage(request.first()),
                         Duration.ofSeconds(TIMEOUT_SECS)
                     )
-                .thenCompose(res -> {
-                    if ((int) res != -1) {
-                        
+                .thenCompose(result_time -> {
+                    if ((int) result_time != -1) {
+                        return CompletableFuture.completedFuture(
+                                new Pair<>(
+                                        request.first(),
+                                        (int) result_time
+                                )
+                        );
                     }
+                    
                 })
 
 

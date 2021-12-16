@@ -46,7 +46,8 @@ public class HttpFlow {
                                 )
                         );
                     }
-                    Sink<Pair<String, Integer>, CompletionStage<Integer>> testSink
+                    Sink<Pair<String, Integer>, CompletionStage<Integer>> testSink = Flow
+                            
 
                 })
 

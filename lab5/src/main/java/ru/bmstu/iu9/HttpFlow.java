@@ -23,7 +23,7 @@ public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
     public static final String COUNT_ARG_NAME = "count";
     public static final Integer NUM_WORKERS = 2;
-    public static final Integer TIMEOUT_SECS = 10;
+    public static final Long TIMEOUT_SECS = 10L;
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor
@@ -42,11 +42,11 @@ public class HttpFlow {
                         Duration.ofSeconds(TIMEOUT_SECS)
                     )
                 .thenCompose(result_time -> {
-                    if ((int) result_time != -1) {
+                    if ((long) result_time != -1) {
                         return CompletableFuture.completedFuture(
                                 new Pair<>(
                                         request.first(),
-                                        (int) result_time
+                                        (long) result_time
                                 )
                         );
                     }

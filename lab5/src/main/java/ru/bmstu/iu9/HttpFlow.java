@@ -13,6 +13,7 @@ import akka.stream.javadsl.Keep;
 import akka.stream.javadsl.Sink;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Dsl;
+import scala.Int;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -33,7 +34,7 @@ public class HttpFlow {
                     Query query = request.getUri().query();
                     return new Pair<>(
                             query.getOrElse(TEST_URL_ARG_NAME, "http://rambler.ru"),
-                            Long.parseLong(query.getOrElse(COUNT_ARG_NAME, "1"))
+                            Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
                     );
                 })
                 .mapAsync(NUM_WORKERS, request -> Patterns.ask(

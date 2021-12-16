@@ -31,51 +31,54 @@ public class HttpFlow {
             ActorMaterializer materializer, ActorRef actor
     ) {
         return Flow.of(HttpRequest.class)
-                .map(request -> {
-                    Query query = request.getUri().query();
-                    return new Pair<>(
-                            query.getOrElse(TEST_URL_ARG_NAME, "http://rambler.ru"),
-                            Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
-                    );
-                })
-                .mapAsync(NUM_WORKERS, request -> Patterns.ask(
-                        actor,
-                        new GetMessage(request.first()),
-                        Duration.ofSeconds(TIMEOUT_SECS)
-                    )
-                .thenCompose(resultTime -> {
-                    if ((long) resultTime != -1) {
-                        return CompletableFuture.completedFuture(
-                                new Pair<>(
-                                        request.first(),
-                                        (long) resultTime
-                                )
-                        );
-                    }
-                    Sink<Pair<String, Integer>, CompletionStage<Long>> testSink =
-                            Flow.<Pair<String, Integer>>create()
-                                    .mapConcat(msg ->
-                                            Collections.nCopies(
-                                                    msg.second(),
-                                                    msg.first())
-                                    )
-                                    .mapAsync(request.second(), url -> {
-                                        long startTime = System.currentTimeMillis();
-                                        AsyncHttpClient client = Dsl.asyncHttpClient();
-                                        return client.prepareGet(url)
-                                                .execute()
-                                                .toCompletableFuture()
-                                                .thenApply(response -> System.currentTimeMillis() - startTime);
-                                    })
-                                    .toMat(Sink.fold(0L, Long::sum), Keep.right());
-                    return Source.from(Collections.singletonList(request))
-                            .toMat(testSink, Keep.right())
-                            .run(materializer)
-                            .thenApply(time -> new Pair(request))
-
-                })
-
-
+            .map(request -> {
+                Query query = request.getUri().query();
+                return new Pair<>(
+                        query.getOrElse(TEST_URL_ARG_NAME, "http://rambler.ru"),
+                        Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
+                );
+            })
+            .mapAsync(NUM_WORKERS, request -> Patterns.ask(
+                    actor,
+                    new GetMessage(request.first()),
+                    Duration.ofSeconds(TIMEOUT_SECS)
                 )
+            .thenCompose(resultTime -> {
+                if ((long) resultTime != -1) {
+                    return CompletableFuture.completedFuture(
+                            new Pair<>(
+                                    request.first(),
+                                    (long) resultTime
+                            )
+                    );
+                }
+                Sink<Pair<String, Integer>, CompletionStage<Long>> testSink =
+                        Flow.<Pair<String, Integer>>create()
+                                .mapConcat(msg ->
+                                        Collections.nCopies(
+                                                msg.second(),
+                                                msg.first())
+                                )
+                                .mapAsync(request.second(), url -> {
+                                    long startTime = System.currentTimeMillis();
+                                    AsyncHttpClient client = Dsl.asyncHttpClient();
+                                    return client.prepareGet(url)
+                                            .execute()
+                                            .toCompletableFuture()
+                                            .thenApply(response -> System.currentTimeMillis() - startTime);
+                                })
+                                .toMat(Sink.fold(0L, Long::sum), Keep.right());
+                return Source.from(Collections.singletonList(request))
+                        .toMat(testSink, Keep.right())
+                        .run(materializer)
+                        .thenApply(allTime -> new Pair<>(request.first(), allTime / request.second()));
+
+            })
+        )
+        .map(result -> {
+            actor.tell(
+                new S
+            )
+        });
     }
 }

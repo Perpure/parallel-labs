@@ -35,7 +35,9 @@ public class HttpFlow {
                         Duration.ofSeconds(TIMEOUT_SECS)
                     )
                 .thenCompose(res -> {
-                    
+                    if ((int) res != -1) {
+                        
+                    }
                 })
 
 

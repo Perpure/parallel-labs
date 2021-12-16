@@ -30,6 +30,8 @@ public class ActorStore extends AbstractActor {
     }
 
     private void storeTime(StoreMessage msg) {
-        storedTimes.put(msg.getUrl(), msg.getTime());
+        if (!storedTimes.containsKey(msg.getUrl())) {
+            storedTimes.put(msg.getUrl(), msg.getTime());
+        }
     }
 }

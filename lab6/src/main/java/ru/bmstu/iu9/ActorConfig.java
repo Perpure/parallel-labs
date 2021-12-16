@@ -1,7 +1,13 @@
 package ru.bmstu.iu9;
 
-public class ActorConfig {
-    private static 
+import akka.actor.AbstractActor;
+
+import java.util.ArrayList;
+
+public class ActorConfig extends AbstractActor {
+    private ArrayList<String> servers;
+
+
 
 
 }

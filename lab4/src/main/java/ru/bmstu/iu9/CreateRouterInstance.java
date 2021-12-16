@@ -14,7 +14,7 @@ import java.util.concurrent.CompletionStage;
 import static akka.http.javadsl.server.Directives.*;
 
 public class CreateRouterInstance {
-    private ActorRef router;
+    private final ActorRef router;
 
     public CreateRouterInstance(ActorRef router) {
         this.router = router;

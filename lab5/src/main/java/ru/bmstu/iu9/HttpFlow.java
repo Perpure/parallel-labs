@@ -12,6 +12,7 @@ import javafx.util.Pair;
 public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
     public static final String COUNT_ARG_NAME = "count";
+    public static final Integer NUM_WORKERS = 2;
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor
@@ -24,8 +25,8 @@ public class HttpFlow {
                             Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
                     );
                 })
-                .mapAsync(
-                        
+                .mapAsync(NUM_WORKERS, 
+
                 )
     }
 }

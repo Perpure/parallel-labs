@@ -10,6 +10,8 @@ import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import akka.japi.Pair;
 
+import java.time.Duration;
+
 public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
     public static final String COUNT_ARG_NAME = "count";
@@ -31,7 +33,8 @@ public class HttpFlow {
                         actor,
                         new GetMessage(
                                 req.first(),
-                                t)
+                                Duration.ofSeconds(TIMEOUT_SECS)
+                        )
                         )
 
                 )

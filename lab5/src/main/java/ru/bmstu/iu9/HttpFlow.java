@@ -14,7 +14,6 @@ import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Dsl;
-import scala.Int;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -25,7 +24,7 @@ public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
     public static final String COUNT_ARG_NAME = "count";
     public static final Integer NUM_WORKERS = 2;
-    public static final Long TIMEOUT_SECS = 10L;
+    public static final int TIMEOUT_SECS = 10;
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor

@@ -20,8 +20,8 @@ public class HttpFlow {
                 .map(req -> {
                     Query query = req.getUri().query();
                     return new Pair<>(
-                            query.get(TEST_URL_ARG_NAME),
-                            Integer.parseInt(query.get(COUNT_ARG_NAME).get())
+                            query.getOrElse(TEST_URL_ARG_NAME, "rambler.ru"),
+                            Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
                     )
                 })
     }

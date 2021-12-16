@@ -5,6 +5,7 @@ import akka.actor.ActorRef;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.model.Query;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import javafx.util.Pair;
@@ -25,7 +26,10 @@ public class HttpFlow {
                             Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
                     );
                 })
-                .mapAsync(NUM_WORKERS, 
+                .mapAsync(NUM_WORKERS, req -> Patterns.ask(
+                        actor,
+                        new 
+                        )
 
                 )
     }

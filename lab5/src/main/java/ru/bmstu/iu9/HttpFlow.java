@@ -1,2 +1,4 @@
-package ru.bmstu.iu9;public class HttpFlow {
+package ru.bmstu.iu9;
+
+public class HttpFlow {
 }

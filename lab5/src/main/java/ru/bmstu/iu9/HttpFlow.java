@@ -11,5 +11,7 @@ public class HttpFlow {
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor
-    )
+    ) {
+        
+    }
 }

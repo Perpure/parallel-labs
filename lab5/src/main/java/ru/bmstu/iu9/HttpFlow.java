@@ -4,6 +4,7 @@ import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.model.Query;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
@@ -14,7 +15,7 @@ public class HttpFlow {
     ) {
         return Flow.of(HttpRequest.class)
                 .map(req -> {
-                    
+                    Query 
                 })
     }
 }

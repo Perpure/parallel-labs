@@ -44,7 +44,7 @@ public class HttpFlow {
                 )
             .thenCompose(resultTime -> {
                 System.out.println(1);
-                System.out.println((long) resultTime);
+                System.out.println(resultTime);
                 if ((long) resultTime != -1) {
                     System.out.println(2);
                     return CompletableFuture.completedFuture(

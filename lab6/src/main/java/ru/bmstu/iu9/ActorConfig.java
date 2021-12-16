@@ -16,5 +16,5 @@ public class ActorConfig extends AbstractActor {
                 .build();
     }
 
-    
+
 }

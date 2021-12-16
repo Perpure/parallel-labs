@@ -11,6 +11,7 @@ import akka.stream.javadsl.Flow;
 import akka.japi.Pair;
 import akka.stream.javadsl.Keep;
 import akka.stream.javadsl.Sink;
+import akka.stream.javadsl.Source;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Dsl;
 import scala.Int;
@@ -67,7 +68,10 @@ public class HttpFlow {
                                                 .thenApply(response -> System.currentTimeMillis() - startTime);
                                     })
                                     .toMat(Sink.fold(0L, Long::sum), Keep.right());
-
+                    return Source.from(Collections.singletonList(request))
+                            .toMat(testSink, Keep.right())
+                            .run(materializer)
+                            .thenApply()
 
                 })
 

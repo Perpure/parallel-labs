@@ -11,6 +11,7 @@ import akka.stream.javadsl.Flow;
 import akka.japi.Pair;
 import akka.stream.javadsl.Sink;
 import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.Dsl;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -57,7 +58,8 @@ public class HttpFlow {
                                     )
                                     .mapAsync(request.second(), url -> {
                                         long startTime = System.currentTimeMillis();
-                                        AsyncHttpClient client = asyncHttpClient();
+                                        AsyncHttpClient client = Dsl.asyncHttpClient();
+                                        
                                     })
 
 

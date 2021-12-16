@@ -17,7 +17,9 @@ public class HttpFlow {
         return Flow.of(HttpRequest.class)
                 .map(req -> {
                     Query query = req.getUri().query();
-                    return new Pair<>()
+                    return new Pair<>(
+                            query.get()
+                    )
                 })
     }
 }

@@ -43,10 +43,8 @@ public class HttpFlow {
                     Duration.ofSeconds(TIMEOUT_SECS)
                 )
             .thenCompose(resultTime -> {
-                System.out.println(1);
                 System.out.println(resultTime);
                 if ((long) resultTime != -1) {
-                    System.out.println(2);
                     return CompletableFuture.completedFuture(
                             new Pair<>(
                                     request.first(),
@@ -54,7 +52,6 @@ public class HttpFlow {
                             )
                     );
                 }
-                System.out.println(3);
                 Sink<Pair<String, Integer>, CompletionStage<Long>> testSink =
                         Flow.<Pair<String, Integer>>create()
                                 .mapConcat(msg ->
@@ -71,7 +68,6 @@ public class HttpFlow {
                                             .thenApply(response -> System.currentTimeMillis() - startTime);
                                 })
                                 .toMat(Sink.fold(0L, Long::sum), Keep.right());
-                System.out.println(4);
                 return Source.from(Collections.singletonList(request))
                         .toMat(testSink, Keep.right())
                         .run(materializer)
@@ -82,7 +78,7 @@ public class HttpFlow {
         .map(result -> {
             actor.tell(
                 new StoreMessage(result.first(), result.second()), ActorRef.noSender());
-                return HttpResponse.create().withEntity(result.first() + ": " + result.second());
+                return HttpResponse.create().withEntity(result.first() + ": " + result.second() + "ms");
         });
     }
 }

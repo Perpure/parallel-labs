@@ -10,7 +10,8 @@ import akka.stream.javadsl.Flow;
 import javafx.util.Pair;
 
 public class HttpFlow {
-    
+    public static String testUrlArgName = "testUrl";
+    public static String countArgName = "count";
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor
@@ -19,7 +20,8 @@ public class HttpFlow {
                 .map(req -> {
                     Query query = req.getUri().query();
                     return new Pair<>(
-                            query.get()
+                            query.get(testUrlArgName),
+                            Integer.parseInt()
                     )
                 })
     }

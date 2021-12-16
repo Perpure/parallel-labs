@@ -8,6 +8,8 @@ public class ActorConfig extends AbstractActor {
     private ArrayList<String> servers;
 
 
-
-
+    @Override
+    public Receive createReceive() {
+        return null;
+    }
 }

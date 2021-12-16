@@ -31,11 +31,9 @@ public class HttpFlow {
                 })
                 .mapAsync(NUM_WORKERS, req -> Patterns.ask(
                         actor,
-                        new GetMessage(
-                                req.first(),
-                                Duration.ofSeconds(TIMEOUT_SECS)
-                        )
-                        ).the
+                        new GetMessage(req.first()),
+                        Duration.ofSeconds(TIMEOUT_SECS)
+                    ).thenCompose()
 
                 )
     }

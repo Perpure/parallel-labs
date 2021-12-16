@@ -9,9 +9,11 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import akka.japi.Pair;
+import akka.stream.javadsl.Sink;
 
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
@@ -44,7 +46,7 @@ public class HttpFlow {
                                 )
                         );
                     }
-                    Sink<>
+                    Sink<Pair<String, Integer>, CompletionStage<Integer>> testSink
 
                 })
 

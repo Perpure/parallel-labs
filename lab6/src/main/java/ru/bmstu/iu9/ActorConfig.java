@@ -1,6 +1,7 @@
 package ru.bmstu.iu9;
 
 import akka.actor.AbstractActor;
+import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,10 @@ public class ActorConfig extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return null;
+        return ReceiveBuilder.create()
+
+                .build();
     }
+
+    
 }

@@ -14,7 +14,7 @@ public class ActorStore extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(GetMessage.class, this::getResult)
-
+                .match(StoreMessage.class, this::storeTime)
                 .build();
     }
 

@@ -61,6 +61,7 @@ public class HttpFlow {
                                 .mapAsync(request.second(), url -> {
                                     long startTime = System.currentTimeMillis();
                                     AsyncHttpClient client = Dsl.asyncHttpClient();
+                                    System.out.println(url);
                                     return client.prepareGet(url)
                                             .execute()
                                             .toCompletableFuture()

@@ -77,8 +77,8 @@ public class HttpFlow {
         )
         .map(result -> {
             actor.tell(
-                new S
-            )
+                new StoreMessage(result.first(), result.second()), ActorRef.noSender());
+                return HttpResponse.create().withEntity(result.first() + ": " + result.second());
         });
     }
 }

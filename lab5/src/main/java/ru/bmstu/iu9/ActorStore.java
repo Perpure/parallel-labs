@@ -24,7 +24,7 @@ public class ActorStore extends AbstractActor {
             sender().tell(storedTimes.get(msg.getUrl()),
                     ActorRef.noSender());
         } else {
-            sender().tell(-1,
+            sender().tell((long)-1,
                     ActorRef.noSender());
         }
     }

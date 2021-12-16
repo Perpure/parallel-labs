@@ -43,6 +43,7 @@ public class HttpFlow {
                     Duration.ofSeconds(TIMEOUT_SECS)
                 )
             .thenCompose(resultTime -> {
+                System.out.println(resultTime);
                 if ((long) resultTime != -1) {
                     return CompletableFuture.completedFuture(
                             new Pair<>(
@@ -61,7 +62,6 @@ public class HttpFlow {
                                 .mapAsync(request.second(), url -> {
                                     long startTime = System.currentTimeMillis();
                                     AsyncHttpClient client = Dsl.asyncHttpClient();
-                                    System.out.println(url);
                                     return client.prepareGet(url)
                                             .execute()
                                             .toCompletableFuture()

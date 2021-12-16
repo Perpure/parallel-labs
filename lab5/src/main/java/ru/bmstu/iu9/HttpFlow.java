@@ -43,12 +43,12 @@ public class HttpFlow {
                         new GetMessage(request.first()),
                         Duration.ofSeconds(TIMEOUT_SECS)
                     )
-                .thenCompose(result_time -> {
-                    if ((long) result_time != -1) {
+                .thenCompose(resultTime -> {
+                    if ((long) resultTime != -1) {
                         return CompletableFuture.completedFuture(
                                 new Pair<>(
                                         request.first(),
-                                        (long) result_time
+                                        (long) resultTime
                                 )
                         );
                     }
@@ -71,7 +71,7 @@ public class HttpFlow {
                     return Source.from(Collections.singletonList(request))
                             .toMat(testSink, Keep.right())
                             .run(materializer)
-                            .thenApply()
+                            .thenApply(time -> new Pair(request))
 
                 })
 

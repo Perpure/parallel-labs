@@ -12,6 +12,7 @@ import akka.japi.Pair;
 import akka.stream.javadsl.Sink;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -48,7 +49,12 @@ public class HttpFlow {
                     }
                     Sink<Pair<String, Integer>, CompletionStage<Integer>> testSink =
                             Flow.<Pair<String, Integer>>create()
-                                    .mapConcat()
+                                    .mapConcat(msg ->
+                                            Collections.nCopies(
+                                                    msg.second(),
+                                                    msg.first())
+                                    )
+                                    .mapAsync()
 
 
                 })

@@ -43,7 +43,7 @@ public class HttpFlow {
                     Duration.ofSeconds(TIMEOUT_SECS)
                 )
             .thenCompose(resultTime -> {
-                System.out.println(resultTime);
+
                 if ((long) resultTime != -1) {
                     return CompletableFuture.completedFuture(
                             new Pair<>(
@@ -68,6 +68,7 @@ public class HttpFlow {
                                             .thenApply(response -> System.currentTimeMillis() - startTime);
                                 })
                                 .toMat(Sink.fold(0L, Long::sum), Keep.right());
+                System.out.println(1);
                 return Source.from(Collections.singletonList(request))
                         .toMat(testSink, Keep.right())
                         .run(materializer)

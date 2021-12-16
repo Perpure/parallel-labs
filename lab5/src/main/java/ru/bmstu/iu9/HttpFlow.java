@@ -8,7 +8,7 @@ import akka.http.javadsl.model.Query;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import javafx.util.Pair;
+import akka.japi.Pair;
 
 public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
@@ -28,7 +28,7 @@ public class HttpFlow {
                 })
                 .mapAsync(NUM_WORKERS, req -> Patterns.ask(
                         actor,
-                        new 
+                        new GetMessage(req.first(), )
                         )
 
                 )

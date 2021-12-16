@@ -33,7 +33,11 @@ public class HttpFlow {
                         actor,
                         new GetMessage(req.first()),
                         Duration.ofSeconds(TIMEOUT_SECS)
-                    ).thenCompose()
+                    )
+                .thenCompose(res -> {
+                    
+                })
+
 
                 )
     }

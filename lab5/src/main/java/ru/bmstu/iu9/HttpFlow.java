@@ -7,6 +7,7 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.model.Query;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import javafx.util.Pair;
 
 public class HttpFlow {
 
@@ -15,7 +16,8 @@ public class HttpFlow {
     ) {
         return Flow.of(HttpRequest.class)
                 .map(req -> {
-                    Query 
+                    Query query = req.getUri().query();
+                    return new Pair<>()
                 })
     }
 }

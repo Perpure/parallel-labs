@@ -9,6 +9,7 @@ import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import akka.japi.Pair;
+import akka.stream.javadsl.Keep;
 import akka.stream.javadsl.Sink;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Dsl;
@@ -32,7 +33,7 @@ public class HttpFlow {
                     Query query = request.getUri().query();
                     return new Pair<>(
                             query.getOrElse(TEST_URL_ARG_NAME, "http://rambler.ru"),
-                            Integer.parseInt(query.getOrElse(COUNT_ARG_NAME, "1"))
+                            Long.parseLong(query.getOrElse(COUNT_ARG_NAME, "1"))
                     );
                 })
                 .mapAsync(NUM_WORKERS, request -> Patterns.ask(
@@ -49,7 +50,7 @@ public class HttpFlow {
                                 )
                         );
                     }
-                    Sink<Pair<String, Integer>, CompletionStage<Integer>> testSink =
+                    Sink<Pair<String, Integer>, CompletionStage<Long>> testSink =
                             Flow.<Pair<String, Integer>>create()
                                     .mapConcat(msg ->
                                             Collections.nCopies(
@@ -59,8 +60,12 @@ public class HttpFlow {
                                     .mapAsync(request.second(), url -> {
                                         long startTime = System.currentTimeMillis();
                                         AsyncHttpClient client = Dsl.asyncHttpClient();
-                                        
+                                        return client.prepareGet(url)
+                                                .execute()
+                                                .toCompletableFuture()
+                                                .thenApply(response -> System.currentTimeMillis() - startTime);
                                     })
+                                    .toMat(Sink.fold(0L, Long::sum), Keep.right());
 
 
                 })

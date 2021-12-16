@@ -2,9 +2,9 @@ package ru.bmstu.iu9;
 
 public class StoreMessage {
     private final String url;
-    private final Integer time;
+    private final Long time;
 
-    public StoreMessage(String url, Integer time) {
+    public StoreMessage(String url, Long time) {
         this.url = url;
         this.time = time;
     }
@@ -13,7 +13,7 @@ public class StoreMessage {
         return url;
     }
 
-    public Integer getTime() {
+    public Long getTime() {
         return time;
     }
 

@@ -12,6 +12,7 @@ public class HttpFlow {
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor
     ) {
-        
+        return Flow.of(HttpRequest.class)
+                .map()
     }
 }

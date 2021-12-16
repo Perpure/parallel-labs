@@ -52,6 +52,7 @@ public class HttpFlow {
                             )
                     );
                 }
+                System.out.println(1);
                 Sink<Pair<String, Integer>, CompletionStage<Long>> testSink =
                         Flow.<Pair<String, Integer>>create()
                                 .mapConcat(msg ->

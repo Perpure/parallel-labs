@@ -14,6 +14,7 @@ public class HttpFlow {
     public static final String TEST_URL_ARG_NAME = "testUrl";
     public static final String COUNT_ARG_NAME = "count";
     public static final Integer NUM_WORKERS = 2;
+    public static final Integer TIMEOUT_SECS = 10;
 
     public static Flow<HttpRequest, HttpResponse, NotUsed> httpFlow(
             ActorMaterializer materializer, ActorRef actor
@@ -28,7 +29,9 @@ public class HttpFlow {
                 })
                 .mapAsync(NUM_WORKERS, req -> Patterns.ask(
                         actor,
-                        new GetMessage(req.first(), )
+                        new GetMessage(
+                                req.first(),
+                                t)
                         )
 
                 )

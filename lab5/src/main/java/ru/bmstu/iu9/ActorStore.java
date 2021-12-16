@@ -1,6 +1,7 @@
 package ru.bmstu.iu9;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.HashMap;
@@ -12,14 +13,19 @@ public class ActorStore extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(GetMessage.class, )
+                .match(GetMessage.class, this::getResult)
+
                 .build();
     }
 
     private void getResult(GetMessage msg) {
         String url = msg.getUrl();
         if (storedTimes.containsKey(url)) {
-            
+            sender().tell(storedTimes.get(msg.getUrl()),
+                    ActorRef.noSender());
+        } else {
+            sender().tell(-1,
+                    ActorRef.noSender());
         }
     }
 

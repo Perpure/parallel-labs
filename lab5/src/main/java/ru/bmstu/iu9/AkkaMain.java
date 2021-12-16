@@ -27,6 +27,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Future;
 
+// localhost:8080?testUrl=http://ya.ru&count=20
 
 
 public class AkkaMain extends AllDirectives {

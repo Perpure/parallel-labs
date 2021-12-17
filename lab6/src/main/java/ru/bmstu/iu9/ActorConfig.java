@@ -16,4 +16,7 @@ public class ActorConfig extends AbstractActor {
                 .build();
     }
 
+    private void getServers(ServersMessage msg) {
+        
+    }
 }

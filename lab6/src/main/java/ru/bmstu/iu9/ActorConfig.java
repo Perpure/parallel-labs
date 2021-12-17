@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ActorConfig extends AbstractActor {
     private ArrayList<String> servers;
@@ -21,6 +22,7 @@ public class ActorConfig extends AbstractActor {
     }
 
     private void getRandomServer() {
-        server = servers.get()
+        String server = servers.get(new Random().nextInt(servers.size()));
+        
     }
 }

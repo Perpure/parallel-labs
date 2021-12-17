@@ -15,7 +15,7 @@ public class ActorConfig extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(ServersMessage.class, this::getServers)
-                .match()
+                .match(EmptyMessage.class, this::getRandomServer)
                 .build();
     }
 
@@ -28,3 +28,5 @@ public class ActorConfig extends AbstractActor {
         sender().tell(server, ActorRef.noSender());
     }
 }
+
+class EmptyMessage {}

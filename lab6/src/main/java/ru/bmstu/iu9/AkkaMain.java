@@ -31,7 +31,7 @@ import java.util.concurrent.Future;
 
 
 public class AkkaMain extends AllDirectives {
-    private static final String HOST = "localhost";
+    private static final String HOST = "127.0.0.1";
     private static final int PORT = 8080;
 
     public static void main(String[] args) throws Exception {

@@ -16,16 +16,12 @@ public class AnonymousRouter {
     public Route createRoute() {
 
         return route(
-                get(() -> parameter("packageId", (id) -> {
+                get(() -> parameter("url", (id) -> {
                     Future<Object> response = Patterns.ask(
                             router,
                             new GetStoredMessage(id),
                             Timeout.create(Duration.ofSeconds(15)));
                     return completeOKWithFuture(response, Jackson.marshaller());
-                })),
-                post(() -> entity(Jackson.unmarshaller(JsonRequest.class), (jsonRequest) -> {
-                    router.tell(jsonRequest, ActorRef.noSender());
-                    return complete("Request received");
                 }))
         );
     }

@@ -13,7 +13,7 @@ public class ZooKeeperInstance implements Watcher {
                 "data".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,
                 CreateMode.EPHEMERAL_SEQUENTIAL
-);
+    );
         List<String> servers = zoo.getChildren("/servers", this);
         for (String s : servers) {
             byte[] data = zoo.getData("/servers/" + s, false, null);

@@ -17,6 +17,8 @@ public class ActorConfig extends AbstractActor {
     }
 
     private void getServers(ServersMessage msg) {
-        
+        servers = msg.getServers();
     }
+
+    private void getRandomServer
 }

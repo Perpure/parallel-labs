@@ -1,6 +1,7 @@
 package ru.bmstu.iu9;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ public class ActorConfig extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-
+                .match(ServersMessage.class, this::getServers)
+                .match()
                 .build();
     }
 
@@ -23,6 +25,6 @@ public class ActorConfig extends AbstractActor {
 
     private void getRandomServer() {
         String server = servers.get(new Random().nextInt(servers.size()));
-        
+        sender().tell(server, ActorRef.noSender());
     }
 }

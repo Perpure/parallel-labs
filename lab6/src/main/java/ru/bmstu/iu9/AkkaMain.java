@@ -36,7 +36,7 @@ public class AkkaMain extends AllDirectives {
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
-        ActorSystem system = ActorSystem.create("TestingSystem");
+        ActorSystem system = ActorSystem.create("Anon");
         ActorRef actorConfig = system.actorOf(Props.create(ActorConfig.class));
 
         final Http http = Http.get(system);

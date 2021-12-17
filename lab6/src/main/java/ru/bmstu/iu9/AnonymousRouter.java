@@ -31,6 +31,7 @@ public class AnonymousRouter {
         return route(
                 get(() -> parameter("url", (url) -> parameter("count", (countRaw) -> {
                     int count = Integer.parseInt(countRaw);
+                    System.out.println(count);
                     if (count == 0) {
                         return completeWithFuture(httpClient.singleRequest(HttpRequest.create(url)));
                     } else {

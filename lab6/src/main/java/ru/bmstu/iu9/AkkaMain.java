@@ -36,13 +36,13 @@ public class AkkaMain extends AllDirectives {
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
         ActorSystem system = ActorSystem.create("TestingSystem");
-        ActorRef actorStore = system.actorOf(Props.create(ActorStore.class));
+        ActorRef actorConfig = system.actorOf(Props.create(ActorConfig.class));
 
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
         //In order to access all directives we need an instance where the routes are define.
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = HttpFlow.httpFlow(materializer, actorStore);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = HttpFlow.httpFlow(materializer, actorConfig);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
                 ConnectHttp.toHost("localhost", 8080), materializer);
 

@@ -7,9 +7,11 @@ public class AnonymousRouter {
     private final ActorRef actorConfig;
     private final Http httpClient;
 
-    public AnonymousRouter(ActorRef actorConfig) {
+    public AnonymousRouter(ActorRef actorConfig, Http httpClient) {
         this.actorConfig = actorConfig;
+        this.httpClient = httpClient;
     }
 
+    
 
 }

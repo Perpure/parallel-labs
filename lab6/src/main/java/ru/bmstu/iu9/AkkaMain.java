@@ -32,13 +32,13 @@ import java.util.concurrent.Future;
 
 public class AkkaMain extends AllDirectives {
     private static final String HOST = "127.0.0.1";
-    private static final int PORT = 8080;
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
         ActorSystem system = ActorSystem.create("Anon");
         ActorRef actorConfig = system.actorOf(Props.create(ActorConfig.class));
 
+        
         new ZooKeeperInstance(actorConfig, HOST, PORT);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);

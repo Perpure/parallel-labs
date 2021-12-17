@@ -40,14 +40,15 @@ public class AnonymousRouter {
         );
     }
 
-    private CompletionStage<HttpResponse> sendToRandomServer(String url, int count) {
+    private CompletionStage<HttpResponse> sendToRandomServer(String url, Integer count) {
         return Patterns.ask(actorConfig, new EmptyMessage(), Duration.ofSeconds(TIMEOUT_SECS))
                 .thenCompose(server -> {
                     Uri uri = Uri.create((String) server)
                             .query(Query.create(
                                     Pair.create("url", url),
-                                    Pair.create("count", count)));
-                })
+                                    Pair.create("count", count.toString())));
+                    return httpClient.singleRequest(HttpRequest.create(uri));
+                });
     }
 
 }

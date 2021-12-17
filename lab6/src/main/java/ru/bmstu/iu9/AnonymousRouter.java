@@ -3,6 +3,7 @@ package ru.bmstu.iu9;
 import akka.actor.ActorRef;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 
 import java.util.concurrent.CompletableFuture;
@@ -33,6 +34,6 @@ public class AnonymousRouter {
         );
     }
 
-    private CompletionStage
+    private CompletionStage<HttpResponse> 
 
 }

@@ -10,7 +10,6 @@ import java.util.Random;
 public class ActorConfig extends AbstractActor {
     private ArrayList<String> servers;
 
-
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
@@ -23,7 +22,7 @@ public class ActorConfig extends AbstractActor {
         servers = msg.getServers();
     }
 
-    private void getRandomServer() {
+    private void getRandomServer(EmptyMessage msg) {
         String server = servers.get(new Random().nextInt(servers.size()));
         sender().tell(server, ActorRef.noSender());
     }

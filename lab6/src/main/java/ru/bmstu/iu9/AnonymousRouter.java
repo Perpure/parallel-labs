@@ -34,7 +34,7 @@ public class AnonymousRouter {
                     if (count == 0) {
                         return completeWithFuture(httpClient.singleRequest(HttpRequest.create(url)));
                     } else {
-
+                        return completeWithFuture(sendToRandomServer(url, count - 1));
                     }
                 })))
         );
@@ -43,6 +43,7 @@ public class AnonymousRouter {
     private CompletionStage<HttpResponse> sendToRandomServer(String url, Integer count) {
         return Patterns.ask(actorConfig, new EmptyMessage(), Duration.ofSeconds(TIMEOUT_SECS))
                 .thenCompose(server -> {
+                    System.out.println(server);
                     Uri uri = Uri.create((String) server)
                             .query(Query.create(
                                     Pair.create("url", url),

@@ -47,7 +47,7 @@ public class AnonymousRouter {
                             .query(Query.create(
                                     Pair.create("url", url),
                                     Pair.create("count", count.toString())));
-                    return httpClient.singleRequest(HttpRequest.create(uri));
+                    return httpClient.singleRequest(HttpRequest.create(String.valueOf(uri)));
                 });
     }
 

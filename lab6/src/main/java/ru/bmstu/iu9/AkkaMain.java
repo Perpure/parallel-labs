@@ -31,7 +31,8 @@ import java.util.concurrent.Future;
 
 
 public class AkkaMain extends AllDirectives {
-
+    private static final String HOST = "localhost";
+    private static final int PORT = 8080;
 
     public static void main(String[] args) throws Exception {
         // boot up server using the route as defined below
@@ -44,9 +45,9 @@ public class AkkaMain extends AllDirectives {
         //In order to access all directives we need an instance where the routes are define.
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = HttpFlow.httpFlow(materializer, actorConfig);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
-                ConnectHttp.toHost("localhost", 8080), materializer);
+                ConnectHttp.toHost(HOST, PORT), materializer);
 
-        System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+        System.out.println("Server online at http://" + HOST + ":" + PORT + "/\nPress RETURN to stop...");
         System.in.read(); // let it run until user presses return
 
         binding

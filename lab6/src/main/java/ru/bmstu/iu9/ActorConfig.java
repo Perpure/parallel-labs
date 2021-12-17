@@ -28,5 +28,3 @@ public class ActorConfig extends AbstractActor {
         sender().tell(server, ActorRef.noSender());
     }
 }
-
-class EmptyMessage {}

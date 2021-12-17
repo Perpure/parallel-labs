@@ -40,8 +40,9 @@ public class AnonymousRouter {
     private CompletionStage<HttpResponse> sendToRandomServer(String url, int count) {
         return Patterns.ask(actorConfig, new EmptyMessage(), Duration.ofSeconds(TIMEOUT_SECS))
                 .thenCompose(server -> {
-                    String query = server +
-                            "url"
+                    HttpRequest request = HttpRequest.newBuilder()
+                            .uri(URI.create("http://webcode.me"))
+                            .build();
                 })
     }
 

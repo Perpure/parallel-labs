@@ -13,9 +13,9 @@ public class ZooKeeperInstance implements Watcher {
     private final ZooKeeper zoo;
     private final ActorRef actorConfig;
 
-    public ZooKeeperInstance(ActorRef actorConfig, String host, int port) throws IOException, InterruptedException, KeeperException {
+    public ZooKeeperInstance(ActorRef actorConfig, String host, Integer port) throws IOException, InterruptedException, KeeperException {
         this.zoo = new ZooKeeper(ZOO_CONNECT_STRING, SESSION_TIMEOUT, this);
-        String akkaAddress = "http://" + host + ":" + port;
+        String akkaAddress = "http://" + host + ":" + port.toString();
         zoo.create("/servers/s",
                 akkaAddress.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE ,

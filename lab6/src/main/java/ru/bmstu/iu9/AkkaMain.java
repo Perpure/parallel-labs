@@ -39,6 +39,7 @@ public class AkkaMain extends AllDirectives {
         ActorSystem system = ActorSystem.create("Anon");
         ActorRef actorConfig = system.actorOf(Props.create(ActorConfig.class));
 
+        new ZooKeeperInstance(actorConfig, HOST, PORT);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 

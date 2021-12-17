@@ -20,6 +20,7 @@ import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import scala.Int;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,8 +39,8 @@ public class AkkaMain extends AllDirectives {
         ActorSystem system = ActorSystem.create("Anon");
         ActorRef actorConfig = system.actorOf(Props.create(ActorConfig.class));
 
-        
-        new ZooKeeperInstance(actorConfig, HOST, PORT);
+        int port = Integer.parseInt(args[0]);
+        new ZooKeeperInstance(actorConfig, HOST, port);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
@@ -47,9 +48,9 @@ public class AkkaMain extends AllDirectives {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = new AnonymousRouter(actorConfig, http)
                 .createRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
-                ConnectHttp.toHost(HOST, PORT), materializer);
+                ConnectHttp.toHost(HOST, port), materializer);
 
-        System.out.println("Server online at http://" + HOST + ":" + PORT + "/\nPress RETURN to stop...");
+        System.out.println("Server online at http://" + HOST + ":" + port + "/\nPress RETURN to stop...");
         System.in.read(); // let it run until user presses return
 
         binding
